@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industrial Engineering Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">Future IE Leader</div>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Bridging Physical Systems with Advanced Technology</h1>
+            <p>Industrial Engineering Student & Project Management Intern at RG Construction. Leveraging data analytics, BIM, and systems optimization to streamline large-scale construction operations.</p>
+            <a href="#projects" class="btn">View My Impact</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <hr>
+            <p>I am an Industrial Engineering student passionate about transforming traditional operations through technology. Currently interning at <strong>RG Construction</strong>, I apply systems thinking to complex, high-stakes infrastructure environments. I'm actively seeking opportunities to leverage my experience with digital twins, automation, and data optimization within cutting-edge tech and AI sectors.</p>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <hr>
+            <p class="subtitle">Real-world experience managing multi-million dollar large-scale developments at RG Construction:</p>
+            
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>Healthcare Infrastructure Optimization</h3>
+                    <p class="meta">Cleveland Clinic & Mayo Clinic Expansion (Rochester, MN)</p>
+                    <p>Applied rigorous estimation workflows and data-driven scheduling. Coordinated closely with IDC jobs to resolve planning bottlenecking, ensuring mission-critical medical expansions remained on schedule.</p>
+                </div>
+                
+                <div class="project-card">
+                    <h3>Entertainment & Commercial Planning</h3>
+                    <p class="meta">Bally's Casino (Chicago, IL)</p>
+                    <p>Contributed to major virtual design and construction phases. Handled software-based estimation modeling and complex resource allocation for urban mega-developments.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3>Advanced Medical Systems Mapping</h3>
+                    <p class="meta">Advocate Masonic & UChicago Medicine Cancer Center</p>
+                    <p>Managed live project tracking, spatial coordination through BIM (Building Information Modeling), and cross-functional communication to minimize operational downtime in active spaces.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2>Technical & Analytical Core</h2>
+            <hr>
+            <div class="skills-wrapper">
+                <div class="skill-category">
+                    <h3>Systems & Softwares</h3>
+                    <ul>
+                        <li>BIM & Virtual Design Construction (VDC)</li>
+                        <li>Advanced Software Estimation</li>
+                        <li>IDC Job Workflows</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Industrial Engineering</h3>
+                    <ul>
+                        <li>Large-scale Planning & Optimization</li>
+                        <li>Data Analytics & AI Applications</li>
+                        <li>Critical Path Project Management</li>
+                        <li>Complex Problem Solving</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 | Industrial Engineering Portfolio. Built via GitHub Pages.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
