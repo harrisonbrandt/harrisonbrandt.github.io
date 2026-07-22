@@ -7,52 +7,39 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
-    <body class="card-body">
+<body class="card-screen">
 
-        <main class="business-card">
-        <div class="card-border-inner">
-        
-            <!-- Top Row -->
-            <div class="card-top-row">
-                <div class="card-phone">
-                    <a href="tel:YOUR_PHONE_NUMBER">312-555-0199</a>
-                </div>
-                <div class="card-school">
-                    <span>University of Iowa</span>
-                    <span class="sub-detail">Industrial Engineering</span>
-                </div>
-            </div>
-
-            <!-- Center Content -->
-            <div class="card-center">
-                <div class="name-email-wrapper">
-                    <h1 class="card-name">Harrison Brandt</h1>
-                    <p class="card-email">
-                        <a href="mailto:harrison-brandt@uiowa.edu">harrison-brandt@uiowa.edu</a>
-                    </p>
-                </div>
-                <!-- Internship Info Under Name & Email -->
-                <p class="card-internship-center">
-                    <span>RG Construction Services</span> &bull; <span class="sub-detail">Project Management Intern</span>
-                </p>
-            </div>
-
-            <!-- Bottom Row (Single Horizontal Line) -->
-            <div class="card-bottom-row">
-                <div class="card-location">
-                    <span>Iowa City, IA &bull; Chicago, IL</span>
-                </div>
-                    <div class="card-nav-links">
-                    <a href="about.html">About & Skills</a>
-                    <span class="bullet">&bull;</span>
-                    <a href="projects.html">Projects &rarr;</a>
-                </div>
-            </div>
-
+    <div class="card-layout">
+        <!-- Top Left -->
+        <div class="top-left">
+            <a href="tel:YOUR_PHONE_NUMBER">312-555-0199</a>
         </div>
-    </main>
+
+        <!-- Top Right -->
+        <div class="top-right">
+            <span class="main-detail">University of Iowa</span>
+            <span class="sub-detail">Industrial Engineering</span>
+        </div>
+
+        <!-- Center -->
+        <div class="center-content">
+            <h1 class="person-name">Harrison Brandt</h1>
+            <p class="person-email">
+                <a href="mailto:harrison-brandt@uiowa.edu">harrison-brandt@uiowa.edu</a>
+            </p>
+        </div>
+
+        <!-- Bottom -->
+        <div class="bottom-content">
+            <p class="bottom-line">
+                Iowa City, IA / Chicago, IL &nbsp;|&nbsp; Project Management Intern at RG Construction &nbsp;|&nbsp; 
+                <a href="about.html">About & Skills</a> &nbsp;|&nbsp; 
+                <a href="projects.html">Projects</a>
+            </p>
+        </div>
+    </div>
 
 </body>
 </html>
