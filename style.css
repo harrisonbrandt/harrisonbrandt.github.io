@@ -1,5 +1,5 @@
 :root {
-    --bg-bone: #f7f5f0;          /* Bone off-white */
+    --bg-bone: #f7f5f0;          /* Authentic Silian Rail bone off-white */
     --card-bg: #ffffff;          /* Crisp card surface */
     --text-primary: #1a1a1a;     /* Dark charcoal engraved ink */
     --text-muted: #555555;       /* Muted detail text */
@@ -32,19 +32,19 @@ body {
 .business-card {
     background: var(--card-bg);
     width: 100%;
-    max-width: 900px; /* INCREASED from 720px */
+    max-width: 900px;
     border: 1px solid var(--border-light);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04);
-    padding: 35px;    /* INCREASED from 25px */
+    padding: 35px;
 }
 
 .card-border-inner {
     border: 1px solid rgba(140, 115, 85, 0.3);
-    padding: 55px 45px; /* INCREASED from 40px 35px */
+    padding: 55px 45px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 480px;  /* INCREASED from 380px */
+    min-height: 480px;
 }
 
 /* Top Row Layout */
@@ -79,23 +79,31 @@ body {
     letter-spacing: 1px;
 }
 
-/* Center Content */
+/* Center Content Layout */
 .card-center {
     text-align: center;
-    margin: 40px 0;
+    margin: 30px 0;
+}
+
+.name-email-wrapper {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 .card-name {
-    font-size: 2.8rem;
+    font-size: 2.6rem;
     font-weight: 700;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--text-primary);
-    margin-bottom: 6px;
+    margin-bottom: 0;
 }
 
 .card-email a {
-    font-size: 1.05rem;
+    font-size: 0.95rem;
     color: var(--text-muted);
     text-decoration: none;
     letter-spacing: 1px;
@@ -106,38 +114,38 @@ body {
     color: var(--accent-gold);
 }
 
-/* Bottom Row Layout */
+/* Internship Subtitle Under Name & Email */
+.card-internship-center {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-primary);
+    margin-top: 12px;
+}
+
+/* Bottom Row Layout (Strict Single-Line Alignment) */
 .card-bottom-row {
     display: flex;
     justify-content: space-between;
-    align-items: center; /* Keeps left, middle, and right blocks vertically centered relative to each other */
+    align-items: center;
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     padding-top: 20px;
     border-top: 1px solid rgba(224, 220, 211, 0.6);
+    white-space: nowrap;
 }
 
-.card-location,
-.card-internship {
-    display: flex;
-    flex-direction: column;
-}
-
-.card-location { 
-    text-align: left; 
-}
-
-.card-internship { 
-    text-align: center; 
+.card-location {
+    text-align: left;
+    color: var(--text-primary);
 }
 
 .card-nav-links {
     display: flex;
-    text-align: right;
-    gap: 8px;
     align-items: center;
-    white-space: nowrap;
+    gap: 8px;
+    text-align: right;
 }
 
 .card-nav-links a {
@@ -153,10 +161,9 @@ body {
 
 .bullet {
     color: var(--accent-gold);
-    margin: 0 4px;
 }
 
-/* Inner Page Styling */
+/* Inner Pages Styling (About & Projects) */
 .page-body {
     padding: 40px 0;
 }
@@ -282,7 +289,7 @@ body {
     margin-bottom: 6px;
 }
 
-/* Project Grid */
+/* Project Grid Styling */
 .project-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -338,15 +345,16 @@ footer {
     color: var(--text-muted);
 }
 
-/* Mobile Responsiveness for Card */
+/* Mobile Responsiveness */
 @media (max-width: 650px) {
     .card-border-inner { padding: 25px 20px; }
-    .card-name { font-size: 2rem; }
+    .card-name { font-size: 1.8rem; }
     .card-top-row, .card-bottom-row {
         flex-direction: column;
         align-items: center;
         text-align: center;
         gap: 15px;
+        white-space: normal;
     }
-    .card-school, .card-nav-links { text-align: center; }
+    .card-school, .card-nav-links, .card-location { text-align: center; }
 }
