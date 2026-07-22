@@ -16,105 +16,112 @@ body {
     background-color: var(--bg-color);
     color: var(--text-dark);
     font-family: var(--font-sans);
-    line-height: 1.6;
+    line-height: 1.5;
     -webkit-font-smoothing: antialiased;
 }
 
-/* ================= FRONT PAGE LAYOUT ================= */
+/* ================= COMPACT CARD FRONT PAGE ================= */
 .card-screen {
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
-    position: relative;
-    padding: 60px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
-.card-layout {
-    height: 100%;
+.card-wrapper {
     width: 100%;
-    position: relative;
+    max-width: 680px; /* Compact business card width */
+    min-height: 380px; /* Compact business card aspect ratio */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 10px;
+    text-align: center;
 }
 
-.top-left {
-    position: absolute;
-    top: 0;
-    left: 0;
-    font-size: 0.95rem;
+/* Top Row Layout */
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 0.9rem;
 }
 
-.top-left a {
+.card-phone a {
     color: var(--text-dark);
     text-decoration: none;
 }
 
-.top-right {
-    position: absolute;
-    top: 0;
-    right: 0;
+.card-school {
     text-align: right;
     display: flex;
     flex-direction: column;
 }
 
-.top-right .main-detail {
+.card-school .main-detail {
     font-family: var(--font-serif);
-    font-size: 1.05rem;
+    font-size: 1rem;
     color: var(--text-dark);
 }
 
-.top-right .sub-detail {
-    font-size: 0.85rem;
+.card-school .sub-detail {
+    font-size: 0.8rem;
     color: var(--text-muted);
 }
 
-.center-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    width: 100%;
+/* Center Content (Stacked Name & Email) */
+.card-center {
+    margin: 30px 0;
     display: flex;
-    align-items: baseline;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
 }
 
 .person-name {
     font-family: var(--font-serif);
-    font-size: 2.5rem;
+    font-size: 2.4rem;
     font-weight: 500;
     letter-spacing: 3px;
     text-transform: uppercase;
 }
 
 .person-email a {
-    font-size: 0.95rem;
-    color: var(--text-dark);
+    font-size: 0.9rem;
+    color: var(--text-muted);
     text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: color 0.2s ease;
 }
 
-.bottom-content {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    text-align: center;
+.person-email a:hover {
+    color: var(--text-dark);
+}
+
+/* Bottom Content Layout */
+.card-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.85rem;
 }
 
 .bottom-line {
-    font-size: 0.9rem;
     color: var(--text-muted);
 }
 
-.bottom-line a {
+.card-nav {
+    font-size: 0.85rem;
+}
+
+.card-nav a {
     color: var(--text-dark);
     text-decoration: none;
     font-weight: 500;
 }
 
-.bottom-line a:hover {
+.card-nav a:hover {
     text-decoration: underline;
 }
 
@@ -265,9 +272,11 @@ body {
 }
 
 /* Mobile Responsiveness */
-@media (max-width: 768px) {
-    .card-screen { padding: 30px 20px; }
-    .center-content { flex-direction: column; gap: 5px; }
+@media (max-width: 650px) {
+    .card-wrapper {
+        min-height: auto;
+        gap: 30px;
+    }
     .person-name { font-size: 1.8rem; }
     .project-item { flex-direction: column; gap: 12px; }
     .project-thumb { width: 100%; height: 160px; }
