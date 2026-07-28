@@ -1,2 +1,2 @@
-# harrisonbrandt3-alt.github.io
-Personal website showcasing skills and projects!
+Personal Portfolio
+peep my 'American Psycho' business card themed site
