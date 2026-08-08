@@ -1,6 +1,6 @@
 :root {
-    --bg-bone: #f7f5f0;          /* Authentic Silian Rail bone background */
-    --card-bg: #ffffff;          /* Pure white card faces */
+    --bg-bone: #f7f5f0;           /* Authentic Silian Rail bone background */
+    --card-bg: #ffffff;           /* Pure white card faces */
     --text-dark: #111111;
     --text-muted: #666666;
     --accent-gold: #8c7355;
@@ -62,9 +62,9 @@ body {
     }
 }
 
-/* Card Flipping Trigger */
+/* Override keyframe animation state when flipped */
 .card.is-flipped {
-    transform: rotateY(180deg);
+    transform: rotateY(180deg) !important;
 }
 
 /* Card Faces */
@@ -73,6 +73,7 @@ body {
     width: 100%;
     height: 100%;
     backface-visibility: hidden; /* Hides reverse side when turned away */
+    -webkit-backface-visibility: hidden;
     background: var(--card-bg);
     border: 1px solid #e0dcd3;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
@@ -85,7 +86,11 @@ body {
 
 /* ================= FRONT SIDE STYLING ================= */
 .card-front {
-    z-index: 2;
+    pointer-events: auto;
+}
+
+.card.is-flipped .card-front {
+    pointer-events: none;
 }
 
 .card-top {
@@ -173,6 +178,11 @@ body {
 .card-back {
     transform: rotateY(180deg);
     padding: 25px 30px;
+    pointer-events: none;
+}
+
+.card.is-flipped .card-back {
+    pointer-events: auto;
 }
 
 .back-header {
