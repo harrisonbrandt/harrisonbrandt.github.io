@@ -1,100 +1,239 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;500;600&display=swap');
 
+/* =========================================================
+PAUL ALLEN-INSPIRED BUSINESS CARD
+Complete stylesheet
+========================================================= */
+
+/* =========================================================
+ROOT VARIABLES
+========================================================= */
+
 :root {
 --bg-dark-wood: #121110;
+--bg-dark-wood-light: #242220;
+
+--paper: #f2f0e8;
+--paper-edge: #c8c3b5;
+--paper-shadow: rgba(0, 0, 0, 0.6);
+
 --text-engraved: #1a1918;
+--text-secondary: #555555;
+--text-muted: #666666;
+
+--tag-background: #e2ddd0;
+
 --font-card: 'Cinzel', serif;
 --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
-/* ================= GLOBAL RESET ================= */
+/* =========================================================
+GLOBAL RESET
+========================================================= */
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  }
+*,
+*::before,
+*::after {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
 
-html,
-body {
+html {
 min-height: 100%;
 }
 
 body {
+min-height: 100vh;
+
 background-color: var(--bg-dark-wood);
+
 color: var(--text-engraved);
+
 font-family: var(--font-sans);
+
 line-height: 1.5;
+
 -webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
 }
 
-/* ================= 3D VIEWPORT & ENTRANCE ANIMATION ================= */
+/* =========================================================
+PAGE / 3D STAGE
+========================================================= */
 
 .card-screen {
+width: 100%;
 min-height: 100vh;
+
 display: flex;
 justify-content: center;
 align-items: center;
+
 padding: 20px;
+
 overflow-x: hidden;
 
-/* Moody vignette background like the film scene */
-background: radial-gradient(
-circle at center,
-#242220 0%,
-#0d0c0b 100%
-);
-}
+/*
+
+* Moody, dark wood / studio background.
+  */
+  background:
+  radial-gradient(
+  circle at center,
+  #242220 0%,
+  #181715 45%,
+  #0d0c0b 100%
+  );
+  }
+
+/* =========================================================
+3D SCENE
+========================================================= */
 
 .scene {
 width: 100%;
 max-width: 680px;
+
 height: 380px;
-perspective: 1200px;
+
+/*
+
+* Strong enough perspective to make the card
+* feel physical without becoming exaggerated.
+  */
+  perspective: 1800px;
+  -webkit-perspective: 1800px;
+
+perspective-origin: 50% 48%;
+-webkit-perspective-origin: 50% 48%;
 }
 
-/* Entrance Animation Container */
+/* =========================================================
+ENTRANCE WRAPPER
+========================================================= */
 
 .entrance-wrapper {
 width: 100%;
 height: 100%;
+
 transform-style: preserve-3d;
-animation: entranceFlip 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+-webkit-transform-style: preserve-3d;
+
+animation:
+paperEntrance
+1.6s
+cubic-bezier(0.16, 1, 0.3, 1)
+both;
+
+will-change: transform, opacity;
 }
 
-@keyframes entranceFlip {
+/* =========================================================
+INITIAL PAPER ENTRANCE
+========================================================= */
+
+@keyframes paperEntrance {
+
 0% {
 opacity: 0;
-transform: rotateY(-90deg) rotateX(15deg) scale(0.85);
+
+```
+transform:
+  rotateY(-78deg)
+  rotateX(11deg)
+  rotateZ(-2deg)
+  translate3d(-35px, 8px, -80px)
+  scale(0.94);
+```
+
+}
+
+25% {
+opacity: 1;
+}
+
+55% {
+transform:
+rotateY(12deg)
+rotateX(-3deg)
+rotateZ(0.8deg)
+translate3d(5px, -2px, 15px)
+scale(1.01);
+}
+
+75% {
+transform:
+rotateY(-4deg)
+rotateX(1deg)
+rotateZ(-0.25deg)
+translate3d(-2px, 1px, 5px)
+scale(1.003);
 }
 
 100% {
 opacity: 1;
-transform: rotateY(0deg) rotateX(0deg) scale(1);
+
+```
+transform:
+  rotateY(0deg)
+  rotateX(0deg)
+  rotateZ(0deg)
+  translate3d(0, 0, 0)
+  scale(1);
+```
+
 }
 }
 
-/* ================= 3D CARD OBJECT ================= */
+/* =========================================================
+CARD OBJECT
+========================================================= */
 
 .card {
 width: 100%;
 height: 100%;
+
 position: relative;
+
 transform-style: preserve-3d;
 -webkit-transform-style: preserve-3d;
-transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+
+transform-origin: 50% 50%;
+
+/*
+
+* Long enough to feel like a physical card,
+* but not so slow that the interface feels sluggish.
+  */
+  transition:
+  transform 1.15s cubic-bezier(0.22, 0.61, 0.36, 1);
+
+will-change: transform;
 }
+
+/* =========================================================
+FLIPPED CARD
+========================================================= */
 
 .card.is-flipped {
-transform: rotateY(180deg);
+transform:
+rotateY(180deg)
+rotateX(0.8deg)
+rotateZ(0.15deg)
+scale(1.008);
 }
 
-/* ================= AUTHENTIC COTTON RAG PAPER STOCK ================= */
+/* =========================================================
+CARD FACES
+========================================================= */
 
 .card-face {
 position: absolute;
+
 width: 100%;
 height: 100%;
+
 top: 0;
 left: 0;
 
@@ -104,11 +243,31 @@ backface-visibility: hidden;
 transform-style: preserve-3d;
 -webkit-transform-style: preserve-3d;
 
-/* Seamless high-resolution tactile cotton paper texture */
-background-color: #f2f0e8;
-background-image: url("https://www.transparenttextures.com/patterns/cardboard-flat.png");
+/*
 
-border: 1px solid #c8c3b5;
+* Tiny Z separation helps prevent flickering / z-fighting
+* in some browsers during the flip.
+  */
+  will-change: transform;
+  }
+
+/* =========================================================
+PAPER CARD APPEARANCE
+========================================================= */
+
+.card-face {
+background-color: var(--paper);
+
+/*
+
+* Tactile cardboard / cotton-like texture.
+  */
+  background-image:
+  url("https://www.transparenttextures.com/patterns/cardboard-flat.png");
+
+border: 1px solid var(--paper-edge);
+
+border-radius: 1px;
 
 box-shadow:
 0 30px 60px rgba(0, 0, 0, 0.6),
@@ -116,7 +275,24 @@ box-shadow:
 inset 0 0 2px rgba(255, 255, 255, 0.8),
 inset 0 0 15px rgba(0, 0, 0, 0.05);
 
-border-radius: 1px;
+/*
+
+* Preserve the paper feel while preventing content
+* from escaping the physical card.
+  */
+  overflow: hidden;
+  }
+
+/* =========================================================
+FRONT FACE
+========================================================= */
+
+.card-front {
+transform:
+rotateY(0deg)
+translateZ(0.01px);
+
+pointer-events: auto;
 
 padding: 38px 45px;
 
@@ -125,514 +301,506 @@ flex-direction: column;
 justify-content: space-between;
 }
 
-.paper-texture {
-display: none;
-}
-
-/* ================= FRONT SIDE ================= */
-
-.card-front {
-transform: rotateY(0deg);
-pointer-events: auto;
-}
-
 .card.is-flipped .card-front {
 pointer-events: none;
 }
 
-/* Deep Letterpress Deboss / Pressed Metal Die Effect */
+/* =========================================================
+LETTERPRESS / ENGRAVED TEXT
+========================================================= */
 
 .card-front *,
 .card-front a,
 .card-front button {
 color: var(--text-engraved) !important;
+
 font-family: var(--font-card);
+
 text-transform: uppercase;
 
-/* Authentic inset shadow */
 text-shadow:
 0px 1px 1px rgba(255, 255, 255, 0.9),
 0px -1px 1px rgba(0, 0, 0, 0.7);
 }
 
+/* =========================================================
+FRONT — TOP
+========================================================= */
+
 .card-top {
+width: 100%;
+
 display: flex;
 justify-content: space-between;
 align-items: flex-start;
-width: 100%;
 }
 
 .card-phone a {
 font-size: 1rem;
+
 letter-spacing: 2px;
+
 font-weight: 700;
+
 text-decoration: none;
 }
 
 .card-school {
 text-align: right;
+
 display: flex;
 flex-direction: column;
 }
 
 .card-school .main-detail {
 font-size: 0.95rem;
+
 font-weight: 700;
+
 letter-spacing: 2.5px;
+
 line-height: 1.1;
 }
 
 .card-school .sub-detail {
 font-size: 0.72rem;
+
 font-weight: 700;
+
 letter-spacing: 1.8px;
+
 margin-top: 3px;
 }
 
+/* =========================================================
+FRONT — CENTER
+========================================================= */
+
 .card-center {
 text-align: center;
+
 margin: 10px 0;
 }
 
 .person-name {
 font-size: 2.1rem;
+
 font-weight: 700;
+
 letter-spacing: 5px;
+
 margin-bottom: 3px;
+
 line-height: 1;
 }
 
 .person-title {
 font-size: 0.85rem;
+
 font-weight: 700;
+
 letter-spacing: 3px;
 }
 
+/* =========================================================
+FRONT — BOTTOM
+========================================================= */
+
 .card-bottom {
-text-align: center;
 width: 100%;
+
+text-align: center;
 }
 
 .bottom-address {
 font-size: 0.75rem;
+
 font-weight: 700;
+
 letter-spacing: 2.2px;
+
 margin-bottom: 2px;
 }
 
 .bottom-contact a {
 font-size: 0.72rem;
+
 font-weight: 700;
+
 letter-spacing: 2px;
+
 text-decoration: none;
 }
 
 .card-nav {
 margin-top: 10px;
+
 font-size: 0.72rem;
+
 letter-spacing: 2px;
+
 font-weight: 700;
 }
 
+/* =========================================================
+FRONT BUTTONS
+========================================================= */
+
 .card-btn {
 background: none;
+
 border: none;
+
 font-size: 0.72rem;
+
 font-weight: 700;
+
 letter-spacing: 2px;
+
 cursor: pointer;
+
 padding: 2px 4px;
-transition: opacity 0.2s ease;
+
+transition:
+opacity 0.25s ease,
+transform 0.25s ease;
 }
 
 .card-btn:hover {
 opacity: 0.5;
+
+transform: translateY(-1px);
 }
 
-/* ================= BACK SIDE STYLING ================= */
+.card-btn:focus-visible {
+outline: 1px solid var(--text-engraved);
+
+outline-offset: 3px;
+}
+
+/* =========================================================
+BACK FACE
+========================================================= */
 
 .card-back {
-transform: rotateY(180deg);
+transform:
+rotateY(180deg)
+translateZ(0.01px);
+
+/*
+
+* IMPORTANT:
+* The back must remain exactly the size of the card.
+  */
+  width: 100%;
+  height: 100%;
+
+min-height: 0;
+
+position: absolute;
+
+top: 0;
+left: 0;
+
+/*
+
+* Flex layout creates the fixed header + scroll area.
+  */
+  display: flex;
+  flex-direction: column;
 
 padding: 28px 32px;
+
+overflow: hidden;
 
 pointer-events: none;
 
 color: var(--text-engraved);
+
 font-family: var(--font-sans);
-
-display: flex;
-flex-direction: column;
-
-/*
-
-* Important for the internal scrolling area.
-* The back face must be constrained to the card height.
-  */
-  height: 100%;
-  min-height: 0;
-
-overflow: hidden;
 }
 
 .card.is-flipped .card-back {
 pointer-events: auto;
 }
 
-/* ================= BACK HEADER ================= */
+/* =========================================================
+BACK HEADER
+========================================================= */
 
 .back-header {
+flex: 0 0 auto;
+
+width: 100%;
+
 display: flex;
+
 justify-content: space-between;
 align-items: center;
 
-border-bottom: 1px solid #c8c3b5;
+border-bottom: 1px solid var(--paper-edge);
 
 padding-bottom: 10px;
+
 margin-bottom: 12px;
+}
 
-/*
-
-* Prevent the header from shrinking when
-* the content below becomes scrollable.
-  */
-  flex: 0 0 auto;
-  }
+/* =========================================================
+RETURN BUTTON
+========================================================= */
 
 .back-link {
 background: none;
+
 border: none;
 
 font-family: var(--font-card);
+
 font-size: 0.75rem;
+
 letter-spacing: 1.5px;
+
 font-weight: 700;
 
 color: var(--text-engraved);
 
 cursor: pointer;
+
 text-transform: uppercase;
+
+transition:
+opacity 0.25s ease,
+transform 0.25s ease;
 }
+
+.back-link:hover {
+opacity: 0.6;
+
+transform: translateX(-2px);
+}
+
+.back-link:focus-visible {
+outline: 1px solid var(--text-engraved);
+
+outline-offset: 3px;
+}
+
+/* =========================================================
+BACK TABS
+========================================================= */
 
 .back-tabs {
 display: flex;
+
 gap: 15px;
 }
 
 .tab-btn {
 background: none;
+
 border: none;
 
 font-size: 0.82rem;
-color: #666666;
+
+color: var(--text-muted);
 
 cursor: pointer;
+
 padding-bottom: 2px;
 
 font-weight: 500;
+
+transition:
+color 0.25s ease,
+transform 0.25s ease;
+}
+
+.tab-btn:hover {
+color: var(--text-engraved);
+
+transform: translateY(-1px);
 }
 
 .tab-btn.active {
 color: var(--text-engraved);
+
 font-weight: 700;
+
 border-bottom: 2px solid var(--text-engraved);
 }
 
-/* ================= SCROLL AREA ================= */
+.tab-btn:focus-visible {
+outline: 1px solid var(--text-engraved);
+
+outline-offset: 3px;
+}
+
+/* =========================================================
+SCROLLABLE BACK CONTENT
+========================================================= */
 
 /*
 
-* This is the important scrolling fix.
+* THIS IS THE IMPORTANT SCROLL FIX.
 *
-* The scroll area takes up the remaining height inside
-* the card-back. When the content is taller than that
-* available space, overflow-y creates the scrollbar.
+* The back header occupies its own fixed space.
+* The scroll area takes everything remaining.
   */
 
 .back-scroll-area {
-flex: 1 1 0;
+position: relative;
+
+width: 100%;
 
 /*
 
-* Allows a flex child to actually become smaller
-* than its content and therefore scroll.
+* 0% basis allows the flex item to shrink properly.
+  */
+  flex: 1 1 0%;
+
+/*
+
+* Critical for nested flex scrolling.
   */
   min-height: 0;
 
-/*
-
-* Helps the browser calculate the available height
-* correctly inside the flex container.
-  */
-  height: 0;
-
 overflow-y: auto;
+
 overflow-x: hidden;
 
 padding-right: 6px;
 
 /*
 
-* Smoother scrolling on iOS/mobile browsers.
+* Smooth touch scrolling.
   */
   -webkit-overflow-scrolling: touch;
 
 /*
 
-* Prevents the scroll from propagating to the page
-* when the user reaches the top/bottom of this area.
+* Prevents the scroll from behaving strangely
+* when the user reaches the beginning/end.
   */
   overscroll-behavior: contain;
-  }
 
-/* Custom scrollbar */
+/*
+
+* Explicitly permits vertical touch scrolling.
+  */
+  touch-action: pan-y;
+
+/*
+
+* Firefox scrollbar.
+  */
+  scrollbar-width: thin;
+
+scrollbar-color:
+rgba(110, 105, 94, 0.65)
+rgba(0, 0, 0, 0.045);
+}
+
+/* =========================================================
+CHROME / SAFARI SCROLLBAR
+========================================================= */
 
 .back-scroll-area::-webkit-scrollbar {
 width: 4px;
 }
 
 .back-scroll-area::-webkit-scrollbar-track {
-background: rgba(0, 0, 0, 0.05);
-border-radius: 2px;
+background: rgba(0, 0, 0, 0.045);
+
+border-radius: 3px;
 }
 
 .back-scroll-area::-webkit-scrollbar-thumb {
-background: #a39e90;
-border-radius: 2px;
+background: rgba(110, 105, 94, 0.65);
+
+border-radius: 3px;
+
+transition:
+background 0.25s ease;
 }
 
 .back-scroll-area::-webkit-scrollbar-thumb:hover {
-background: #858073;
+background: rgba(70, 67, 60, 0.85);
 }
 
-/* Firefox scrollbar */
-
-.back-scroll-area {
-scrollbar-width: thin;
-scrollbar-color: #a39e90 rgba(0, 0, 0, 0.05);
-}
-
-/* ================= TAB CONTENT ================= */
+/* =========================================================
+PANEL CONTENT
+========================================================= */
 
 .panel-content {
 display: none;
-padding-bottom: 10px;
+
+width: 100%;
+
+padding-bottom: 20px;
 }
 
 .panel-content.active {
 display: block;
-animation: fadeIn 0.3s ease;
+
+width: 100%;
+
+animation:
+panelReveal
+0.45s
+cubic-bezier(0.22, 1, 0.36, 1)
+both;
 }
 
-@keyframes fadeIn {
+/* =========================================================
+PANEL TRANSITION
+========================================================= */
+
+@keyframes panelReveal {
+
 from {
 opacity: 0;
-transform: translateY(4px);
+
+```
+transform:
+  translateY(8px);
+```
+
 }
 
 to {
 opacity: 1;
-transform: translateY(0);
+
+```
+transform:
+  translateY(0);
+```
+
 }
 }
+
+/* =========================================================
+PANEL TITLES
+========================================================= */
 
 .panel-title {
 font-family: var(--font-card);
+
 font-size: 1.1rem;
+
 letter-spacing: 1.5px;
+
 margin-bottom: 12px;
-text-transform: uppercase;
-font-weight: 700;
-}
-
-/* ================= EXPERIENCE PANEL ================= */
-
-.exp-header {
-display: flex;
-justify-content: space-between;
-align-items: flex-start;
-
-margin-bottom: 8px;
-
-border-left: 2px solid var(--text-engraved);
-padding-left: 10px;
-}
-
-.exp-title-group h3 {
-font-size: 1rem;
-font-weight: 600;
-}
-
-.exp-role {
-display: block;
-
-font-size: 0.78rem;
-color: #555555;
-font-weight: 600;
 
 text-transform: uppercase;
-letter-spacing: 0.5px;
-}
-
-.exp-meta {
-text-align: right;
-
-font-size: 0.78rem;
-color: #666666;
-
-display: flex;
-flex-direction: column;
-}
-
-.exp-location {
-font-style: italic;
-}
-
-.exp-tags {
-display: flex;
-flex-wrap: wrap;
-gap: 6px;
-
-margin: 10px 0 14px 0;
-}
-
-.tag {
-background-color: #e2ddd0;
-color: var(--text-engraved);
-
-font-size: 0.7rem;
-font-weight: 600;
-
-padding: 2px 7px;
-
-border-radius: 2px;
-
-letter-spacing: 0.3px;
-}
-
-.exp-bullets {
-list-style: none;
-
-padding-left: 0;
-margin-bottom: 16px;
-}
-
-.exp-bullets li {
-position: relative;
-
-padding-left: 14px;
-
-font-size: 0.83rem;
-color: #333333;
-
-margin-bottom: 7px;
-
-line-height: 1.45;
-}
-
-.exp-bullets li::before {
-content: "■";
-
-position: absolute;
-left: 0;
-top: 3px;
-
-font-size: 0.4rem;
-color: var(--text-engraved);
-}
-
-.exp-bullets strong {
-color: var(--text-engraved);
-font-weight: 600;
-}
-
-/* ================= PROJECT GALLERY ================= */
-
-.gallery-section-title {
-font-family: var(--font-card);
-font-size: 0.78rem;
-
-text-transform: uppercase;
-letter-spacing: 1px;
-
-color: #666666;
-
-margin-bottom: 8px;
-
-border-bottom: 1px dashed #c8c3b5;
-
-padding-bottom: 4px;
 
 font-weight: 700;
-}
-
-.project-gallery {
-display: flex;
-gap: 10px;
-
-overflow-x: auto;
-
-padding-bottom: 6px;
-}
-
-.gallery-item {
-flex: 0 0 115px;
-
-display: flex;
-flex-direction: column;
-
-background: #ffffff;
-
-border: 1px solid #c8c3b5;
-border-radius: 2px;
-
-overflow: hidden;
-}
-
-.img-wrapper {
-width: 100%;
-height: 70px;
-
-overflow: hidden;
-
-background-color: #eee;
-}
-
-.gallery-item img {
-width: 100%;
-height: 100%;
-
-object-fit: cover;
-}
-
-.gallery-info {
-padding: 4px 5px;
-
-display: flex;
-flex-direction: column;
-}
-
-.project-name {
-font-size: 0.7rem;
-font-weight: 600;
 
 color: var(--text-engraved);
-
-white-space: nowrap;
-overflow: hidden;
-text-overflow: ellipsis;
 }
 
-.project-type {
-font-size: 0.6rem;
-color: #666666;
-
-white-space: nowrap;
-overflow: hidden;
-text-overflow: ellipsis;
-}
-
-/* ================= ABOUT & SKILLS ================= */
+/* =========================================================
+ABOUT SECTION
+========================================================= */
 
 .about-text {
 font-size: 0.88rem;
@@ -643,6 +811,10 @@ line-height: 1.55;
 
 margin-bottom: 15px;
 }
+
+/* =========================================================
+SKILLS GRID
+========================================================= */
 
 .skills-grid {
 display: flex;
@@ -655,7 +827,7 @@ margin-top: 10px;
 }
 
 .skill-col {
-flex: 1;
+flex: 1 1 180px;
 
 min-width: 180px;
 }
@@ -664,9 +836,10 @@ min-width: 180px;
 font-size: 0.75rem;
 
 text-transform: uppercase;
+
 letter-spacing: 1px;
 
-color: #666666;
+color: var(--text-muted);
 
 margin-bottom: 8px;
 }
@@ -681,27 +854,354 @@ font-size: 0.83rem;
 color: var(--text-engraved);
 
 margin-bottom: 5px;
+
+line-height: 1.4;
 }
 
-/* ================= MOBILE RESPONSIVENESS ================= */
+/* =========================================================
+EXPERIENCE SECTION
+========================================================= */
+
+.exp-header {
+display: flex;
+
+justify-content: space-between;
+
+align-items: flex-start;
+
+margin-bottom: 8px;
+
+border-left: 2px solid var(--text-engraved);
+
+padding-left: 10px;
+}
+
+.exp-title-group {
+min-width: 0;
+}
+
+.exp-title-group h3 {
+font-size: 1rem;
+
+font-weight: 600;
+
+line-height: 1.25;
+}
+
+.exp-role {
+display: block;
+
+font-size: 0.78rem;
+
+color: var(--text-secondary);
+
+font-weight: 600;
+
+text-transform: uppercase;
+
+letter-spacing: 0.5px;
+
+margin-top: 2px;
+}
+
+.exp-meta {
+flex-shrink: 0;
+
+text-align: right;
+
+font-size: 0.78rem;
+
+color: var(--text-muted);
+
+display: flex;
+
+flex-direction: column;
+
+margin-left: 12px;
+}
+
+.exp-location {
+font-style: italic;
+}
+
+/* =========================================================
+EXPERIENCE TAGS
+========================================================= */
+
+.exp-tags {
+display: flex;
+
+flex-wrap: wrap;
+
+gap: 6px;
+
+margin: 10px 0 14px 0;
+}
+
+.tag {
+background-color: var(--tag-background);
+
+color: var(--text-engraved);
+
+font-size: 0.7rem;
+
+font-weight: 600;
+
+padding: 2px 7px;
+
+border-radius: 2px;
+
+letter-spacing: 0.3px;
+}
+
+/* =========================================================
+EXPERIENCE BULLETS
+========================================================= */
+
+.exp-bullets {
+list-style: none;
+
+padding-left: 0;
+
+margin-bottom: 16px;
+}
+
+.exp-bullets li {
+position: relative;
+
+padding-left: 14px;
+
+font-size: 0.83rem;
+
+color: #333333;
+
+margin-bottom: 7px;
+
+line-height: 1.45;
+}
+
+.exp-bullets li::before {
+content: "■";
+
+position: absolute;
+
+left: 0;
+
+top: 3px;
+
+font-size: 0.4rem;
+
+color: var(--text-engraved);
+}
+
+.exp-bullets strong {
+color: var(--text-engraved);
+
+font-weight: 600;
+}
+
+/* =========================================================
+PROJECT GALLERY
+========================================================= */
+
+.gallery-section-title {
+font-family: var(--font-card);
+
+font-size: 0.78rem;
+
+text-transform: uppercase;
+
+letter-spacing: 1px;
+
+color: var(--text-muted);
+
+margin-bottom: 8px;
+
+border-bottom: 1px dashed var(--paper-edge);
+
+padding-bottom: 4px;
+
+font-weight: 700;
+}
+
+.project-gallery {
+display: flex;
+
+gap: 10px;
+
+overflow-x: auto;
+
+padding-bottom: 6px;
+
+/*
+
+* Prevent the cards from wrapping.
+  */
+  flex-wrap: nowrap;
+
+scrollbar-width: thin;
+
+scrollbar-color:
+rgba(110, 105, 94, 0.55)
+transparent;
+}
+
+.project-gallery::-webkit-scrollbar {
+height: 4px;
+}
+
+.project-gallery::-webkit-scrollbar-track {
+background: transparent;
+}
+
+.project-gallery::-webkit-scrollbar-thumb {
+background: rgba(110, 105, 94, 0.55);
+
+border-radius: 3px;
+}
+
+/* =========================================================
+PROJECT CARDS
+========================================================= */
+
+.gallery-item {
+flex: 0 0 115px;
+
+display: flex;
+
+flex-direction: column;
+
+background: #ffffff;
+
+border: 1px solid var(--paper-edge);
+
+border-radius: 2px;
+
+overflow: hidden;
+}
+
+.img-wrapper {
+width: 100%;
+
+height: 70px;
+
+overflow: hidden;
+
+background-color: #eeeeee;
+}
+
+.gallery-item img {
+display: block;
+
+width: 100%;
+
+height: 100%;
+
+object-fit: cover;
+
+transition:
+transform 0.45s ease;
+}
+
+.gallery-item:hover img {
+transform: scale(1.035);
+}
+
+.gallery-info {
+padding: 4px 5px;
+
+display: flex;
+
+flex-direction: column;
+}
+
+.project-name {
+font-size: 0.7rem;
+
+font-weight: 600;
+
+color: var(--text-engraved);
+
+white-space: nowrap;
+
+overflow: hidden;
+
+text-overflow: ellipsis;
+}
+
+.project-type {
+font-size: 0.6rem;
+
+color: var(--text-muted);
+
+white-space: nowrap;
+
+overflow: hidden;
+
+text-overflow: ellipsis;
+}
+
+/* =========================================================
+PAPER TEXTURE
+========================================================= */
+
+.paper-texture {
+display: none;
+}
+
+/* =========================================================
+MOBILE — TABLET / PHONE
+========================================================= */
 
 @media (max-width: 720px) {
+
 .card-screen {
 min-height: 100vh;
+
+```
 padding: 20px;
+```
+
 }
 
 .scene {
 height: 480px;
+
+```
+perspective: 1400px;
+-webkit-perspective: 1400px;
+```
+
 }
 
-.card-face {
+.card {
+transition:
+transform 1s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.card.is-flipped {
+transform:
+rotateY(180deg)
+rotateX(0.5deg)
+rotateZ(0.1deg)
+scale(1.004);
+}
+
+.card-front {
 padding: 25px 20px;
+}
+
+.card-back {
+padding: 22px 20px;
 }
 
 .person-name {
 font-size: 1.45rem;
+
+```
 letter-spacing: 3px;
+```
+
 }
 
 .card-phone a,
@@ -709,8 +1209,13 @@ letter-spacing: 3px;
 font-size: 0.78rem;
 }
 
-.card-back {
-padding: 22px 20px;
+.person-title {
+font-size: 0.72rem;
+
+```
+letter-spacing: 2px;
+```
+
 }
 
 .back-tabs {
@@ -725,18 +1230,37 @@ font-size: 0.72rem;
 font-size: 0.68rem;
 }
 
-.skills-grid {
-gap: 12px;
-}
-
 .skill-col {
 min-width: 140px;
 }
+
+.exp-header {
+/*
+* Give the experience header more room
+* on narrow screens.
+*/
+flex-direction: column;
 }
 
-/* ================= SMALL MOBILE DEVICES ================= */
+.exp-meta {
+text-align: left;
+
+```
+margin-left: 12px;
+
+margin-top: 4px;
+```
+
+}
+
+}
+
+/* =========================================================
+SMALL PHONES
+========================================================= */
 
 @media (max-width: 480px) {
+
 .card-screen {
 padding: 10px;
 }
@@ -745,7 +1269,7 @@ padding: 10px;
 height: 500px;
 }
 
-.card-face {
+.card-front {
 padding: 20px 16px;
 }
 
@@ -753,8 +1277,72 @@ padding: 20px 16px;
 padding: 20px 16px;
 }
 
-.back-header {
-margin-bottom: 10px;
+.person-name {
+font-size: 1.25rem;
+
+```
+letter-spacing: 2px;
+```
+
+}
+
+.person-title {
+font-size: 0.68rem;
+
+```
+letter-spacing: 1.5px;
+```
+
+}
+
+.card-phone a,
+.card-school .main-detail {
+font-size: 0.7rem;
+}
+
+.card-school .sub-detail {
+font-size: 0.58rem;
+
+```
+letter-spacing: 1px;
+```
+
+}
+
+.bottom-address {
+font-size: 0.62rem;
+
+```
+letter-spacing: 1.2px;
+```
+
+}
+
+.bottom-contact a {
+font-size: 0.58rem;
+
+```
+letter-spacing: 1px;
+```
+
+}
+
+.card-nav {
+font-size: 0.58rem;
+
+```
+letter-spacing: 1px;
+```
+
+}
+
+.card-btn {
+font-size: 0.58rem;
+
+```
+letter-spacing: 1px;
+```
+
 }
 
 .back-tabs {
@@ -769,22 +1357,68 @@ font-size: 0.65rem;
 font-size: 0.62rem;
 }
 
-.person-name {
-font-size: 1.25rem;
-letter-spacing: 2px;
-}
-
-.person-title {
-font-size: 0.72rem;
-letter-spacing: 2px;
-}
-
 .skills-grid {
 flex-direction: column;
+
+```
 gap: 10px;
+```
+
 }
 
 .skill-col {
 min-width: 0;
 }
+
+.gallery-item {
+flex-basis: 110px;
+}
+
+}
+
+/* =========================================================
+TOUCH DEVICES
+========================================================= */
+
+@media (hover: none) {
+
+.card-btn:hover,
+.back-link:hover,
+.tab-btn:hover {
+opacity: 1;
+
+```
+transform: none;
+```
+
+}
+
+.gallery-item:hover img {
+transform: none;
+}
+
+}
+
+/* =========================================================
+ACCESSIBILITY — REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+.entrance-wrapper {
+animation: none;
+}
+
+.card {
+transition: none;
+}
+
+.panel-content.active {
+animation: none;
+}
+
+.gallery-item img {
+transition: none;
+}
+
 }
