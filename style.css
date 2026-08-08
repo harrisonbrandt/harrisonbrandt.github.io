@@ -1,7 +1,9 @@
 :root {
-    --bg-color: #ffffff;
+    --bg-bone: #f7f5f0;          /* Authentic Silian Rail bone background */
+    --card-bg: #ffffff;          /* Pure white card faces */
     --text-dark: #111111;
     --text-muted: #666666;
+    --accent-gold: #8c7355;
     --font-serif: 'Cinzel', serif;
     --font-sans: 'Inter', -apple-system, sans-serif;
 }
@@ -13,34 +15,79 @@
 }
 
 body {
-    background-color: var(--bg-color);
+    background-color: var(--bg-bone);
     color: var(--text-dark);
     font-family: var(--font-sans);
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
 }
 
-/* ================= COMPACT CARD FRONT PAGE ================= */
+/* ================= 3D VIEWPORT & ENTRANCE ANIMATION ================= */
 .card-screen {
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
+    overflow-x: hidden;
 }
 
-.card-wrapper {
+.scene {
     width: 100%;
-    max-width: 680px; /* Compact business card width */
-    min-height: 380px; /* Compact business card aspect ratio */
+    max-width: 720px;
+    height: 480px;
+    perspective: 1200px; /* Gives realistic depth to 3D rotations */
+}
+
+/* 3D Card Object */
+.card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Entrance Flip animation on initial website launch */
+    animation: entranceFlip 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes entranceFlip {
+    0% {
+        opacity: 0;
+        transform: rotateY(-90deg) rotateX(15deg) scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: rotateY(0deg) rotateX(0deg) scale(1);
+    }
+}
+
+/* Card Flipping Trigger */
+.card.is-flipped {
+    transform: rotateY(180deg);
+}
+
+/* Card Faces */
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Hides reverse side when turned away */
+    background: var(--card-bg);
+    border: 1px solid #e0dcd3;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+    border-radius: 4px;
+    padding: 35px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 20px 10px;
-    text-align: center;
 }
 
-/* Top Row Layout */
+/* ================= FRONT SIDE STYLING ================= */
+.card-front {
+    z-index: 2;
+}
+
 .card-top {
     display: flex;
     justify-content: space-between;
@@ -70,18 +117,14 @@ body {
     color: var(--text-muted);
 }
 
-/* Center Content (Stacked Name & Email) */
 .card-center {
-    margin: 30px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
+    text-align: center;
+    margin: 20px 0;
 }
 
 .person-name {
     font-family: var(--font-serif);
-    font-size: 2.4rem;
+    font-size: 2.5rem;
     font-weight: 500;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -92,126 +135,207 @@ body {
     color: var(--text-muted);
     text-decoration: none;
     letter-spacing: 0.5px;
-    transition: color 0.2s ease;
+    transition: color 0.2s;
 }
 
 .person-email a:hover {
     color: var(--text-dark);
 }
 
-/* Bottom Content Layout */
 .card-bottom {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+    text-align: center;
     font-size: 0.85rem;
 }
 
 .bottom-line {
     color: var(--text-muted);
+    margin-bottom: 6px;
 }
 
-.card-nav {
+.card-btn {
+    background: none;
+    border: none;
+    font-family: var(--font-sans);
     font-size: 0.85rem;
-}
-
-.card-nav a {
+    font-weight: 600;
     color: var(--text-dark);
-    text-decoration: none;
-    font-weight: 500;
+    cursor: pointer;
+    padding: 2px 4px;
+    transition: color 0.2s;
 }
 
-.card-nav a:hover {
+.card-btn:hover {
+    color: var(--accent-gold);
     text-decoration: underline;
 }
 
-/* ================= INNER PAGES ================= */
-.page-screen {
-    padding: 60px 20px;
+/* ================= BACK SIDE STYLING ================= */
+.card-back {
+    transform: rotateY(180deg);
+    padding: 25px 30px;
 }
 
-.minimal-container {
-    max-width: 750px;
-    margin: 0 auto;
-}
-
-.top-nav {
+.back-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 60px;
-    font-size: 0.9rem;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 12px;
+    margin-bottom: 15px;
 }
 
 .back-link {
+    background: none;
+    border: none;
     font-family: var(--font-serif);
-    color: var(--text-dark);
-    text-decoration: none;
-    font-size: 1.1rem;
+    font-size: 0.85rem;
     letter-spacing: 1px;
-}
-
-.nav-links a {
-    color: var(--text-muted);
-    text-decoration: none;
-    margin-left: 20px;
-}
-
-.nav-links a.active, .nav-links a:hover {
-    color: var(--text-dark);
-    font-weight: 500;
-}
-
-.minimal-section {
-    margin-bottom: 50px;
-}
-
-.page-title {
-    font-family: var(--font-serif);
-    font-size: 2rem;
-    font-weight: 500;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
+    color: var(--accent-gold);
+    cursor: pointer;
     text-transform: uppercase;
 }
 
-.page-subtitle {
+.back-tabs {
+    display: flex;
+    gap: 15px;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    font-size: 0.85rem;
     color: var(--text-muted);
-    font-size: 0.95rem;
-    margin-bottom: 40px;
+    cursor: pointer;
+    padding-bottom: 2px;
 }
 
-.about-text {
-    font-size: 1.05rem;
-    color: #333333;
-    line-height: 1.8;
+.tab-btn.active {
+    color: var(--text-dark);
+    font-weight: 600;
+    border-bottom: 2px solid var(--text-dark);
 }
 
-.section-title {
+.back-scroll-area {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+/* Custom Scrollbar for the Card Back */
+.back-scroll-area::-webkit-scrollbar {
+    width: 4px;
+}
+.back-scroll-area::-webkit-scrollbar-thumb {
+    background: #dddddd;
+    border-radius: 2px;
+}
+
+.panel-content {
+    display: none;
+}
+
+.panel-content.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.panel-title {
     font-family: var(--font-serif);
     font-size: 1.25rem;
     letter-spacing: 1px;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
     text-transform: uppercase;
+}
+
+/* Experience Panel Content */
+.exp-header {
+    margin-bottom: 12px;
+}
+
+.exp-header h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+.exp-role {
+    font-size: 0.85rem;
+    color: var(--accent-gold);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.exp-bullets {
+    padding-left: 18px;
+    margin-bottom: 20px;
+}
+
+.exp-bullets li {
+    font-size: 0.88rem;
+    color: #333333;
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+/* Photo Gallery Strip */
+.project-gallery {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    margin-top: 15px;
+}
+
+.gallery-item {
+    flex: 0 0 110px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gallery-item img {
+    width: 110px;
+    height: 75px;
+    object-fit: cover;
+    border: 1px solid #e0dcd3;
+    border-radius: 2px;
+}
+
+.gallery-item span {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+    text-align: center;
+}
+
+/* About Panel Content */
+.about-text {
+    font-size: 0.95rem;
+    color: #333333;
+    line-height: 1.6;
 }
 
 .skills-grid {
     display: flex;
-    gap: 40px;
+    gap: 25px;
     flex-wrap: wrap;
 }
 
 .skill-col {
     flex: 1;
-    min-width: 250px;
+    min-width: 200px;
 }
 
 .skill-col h3 {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: var(--text-muted);
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .skill-col ul {
@@ -219,65 +343,14 @@ body {
 }
 
 .skill-col li {
-    font-size: 0.95rem;
+    font-size: 0.88rem;
     color: var(--text-dark);
-    margin-bottom: 8px;
-}
-
-/* Projects List Layout */
-.projects-list {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-}
-
-.project-item {
-    display: flex;
-    gap: 25px;
-    align-items: flex-start;
-}
-
-.project-thumb {
-    width: 140px;
-    height: 90px;
-    flex-shrink: 0;
-    overflow: hidden;
-    background: #f4f4f4;
-}
-
-.project-thumb img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.project-info h3 {
-    font-family: var(--font-serif);
-    font-size: 1.1rem;
-    letter-spacing: 0.5px;
-    margin-bottom: 4px;
-}
-
-.project-meta {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 8px;
-}
-
-.project-info p {
-    font-size: 0.9rem;
-    color: #444444;
+    margin-bottom: 6px;
 }
 
 /* Mobile Responsiveness */
-@media (max-width: 650px) {
-    .card-wrapper {
-        min-height: auto;
-        gap: 30px;
-    }
+@media (max-width: 720px) {
+    .scene { height: 560px; }
     .person-name { font-size: 1.8rem; }
-    .project-item { flex-direction: column; gap: 12px; }
-    .project-thumb { width: 100%; height: 160px; }
+    .card-face { padding: 25px 20px; }
 }
