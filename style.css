@@ -39,15 +39,11 @@ body {
     perspective: 1200px; /* Gives realistic depth to 3D rotations */
 }
 
-/* 3D Card Object */
-.card {
+/* Isolated Entrance Animation Container */
+.entrance-wrapper {
     width: 100%;
     height: 100%;
-    position: relative;
     transform-style: preserve-3d;
-    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    
-    /* Entrance Flip animation on initial website launch */
     animation: entranceFlip 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
@@ -62,9 +58,19 @@ body {
     }
 }
 
-/* Override keyframe animation state when flipped */
+/* 3D Card Object */
+.card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Card Flipping Trigger */
 .card.is-flipped {
-    transform: rotateY(180deg) !important;
+    transform: rotateY(180deg);
 }
 
 /* Card Faces */
@@ -72,8 +78,12 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
+    top: 0;
+    left: 0;
     backface-visibility: hidden; /* Hides reverse side when turned away */
     -webkit-backface-visibility: hidden;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
     background: var(--card-bg);
     border: 1px solid #e0dcd3;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
@@ -86,6 +96,7 @@ body {
 
 /* ================= FRONT SIDE STYLING ================= */
 .card-front {
+    transform: rotateY(0deg);
     pointer-events: auto;
 }
 
