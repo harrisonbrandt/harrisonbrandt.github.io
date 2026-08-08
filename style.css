@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;500;600&display=swap');
+
 :root {
-    --bg-bone: #dcd7cc;           /* Warm background canvas */
-    --card-paper: #f7f5ef;        /* Silian Rail Bone Stock */
-    --text-engraved: #1d1c1a;     /* Inky engraved black */
-    --font-card: 'Cinzel', serif; /* Roman letterpress serif */
+    --bg-dark-wood: #121110;       /* Dark background to make bone card pop */
+    --text-engraved: #1a1918;     /* Heavy black/charcoal letterpress ink */
+    --font-card: 'Cinzel', serif; /* Roman letterpress style font */
     --font-sans: 'Inter', -apple-system, sans-serif;
 }
 
@@ -13,7 +14,7 @@
 }
 
 body {
-    background-color: var(--bg-bone);
+    background-color: var(--bg-dark-wood);
     color: var(--text-engraved);
     font-family: var(--font-sans);
     line-height: 1.5;
@@ -28,13 +29,14 @@ body {
     align-items: center;
     padding: 20px;
     overflow-x: hidden;
-    background: radial-gradient(circle at center, #eae6dc 0%, #c8c3b4 100%);
+    /* Moody vignette background like the film scene */
+    background: radial-gradient(circle at center, #242220 0%, #0d0c0b 100%);
 }
 
 .scene {
     width: 100%;
     max-width: 680px;
-    height: 390px;
+    height: 380px;
     perspective: 1200px;
 }
 
@@ -57,7 +59,7 @@ body {
     }
 }
 
-/* 3D Card Container */
+/* 3D Card Object */
 .card {
     width: 100%;
     height: 100%;
@@ -71,7 +73,7 @@ body {
     transform: rotateY(180deg);
 }
 
-/* ================= COTTON RAG PAPER STOCK & FACES ================= */
+/* ================= AUTHENTIC COTTON RAG PAPER STOCK ================= */
 .card-face {
     position: absolute;
     width: 100%;
@@ -83,32 +85,29 @@ body {
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
     
-    /* Clean pure CSS Paper Stock Grain Texture */
-    background-color: var(--card-paper);
-    background-image: 
-        radial-gradient(circle at 50% 50%, rgba(255,255,255,0.9) 0%, rgba(235,230,220,0.4) 100%),
-        repeating-radial-gradient(circle at 17% 32%, rgba(0,0,0,0.015) 0px, rgba(0,0,0,0.015) 1px, transparent 1px, transparent 3px),
-        repeating-radial-gradient(circle at 83% 67%, rgba(0,0,0,0.012) 0px, rgba(0,0,0,0.012) 1px, transparent 1px, transparent 4px);
+    /* Seamless high-resolution tactile cotton paper texture */
+    background-color: #f2f0e8;
+    background-image: url("https://www.transparenttextures.com/patterns/cardboard-flat.png");
     
-    border: 1px solid #d5d0c3;
+    border: 1px solid #c8c3b5;
     box-shadow: 
-        0 25px 45px rgba(0, 0, 0, 0.14),
-        0 2px 5px rgba(0, 0, 0, 0.05),
-        inset 0 0 1px 1px rgba(255, 255, 255, 0.9),
-        inset 0 0 25px rgba(180, 170, 150, 0.12);
-    border-radius: 2px;
-    padding: 38px 42px;
+        0 30px 60px rgba(0, 0, 0, 0.6),
+        0 10px 20px rgba(0, 0, 0, 0.4),
+        inset 0 0 2px rgba(255, 255, 255, 0.8),
+        inset 0 0 15px rgba(0, 0, 0, 0.05);
+    border-radius: 1px;
+    padding: 38px 45px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow: hidden;
 }
 
-/* Removes buggy background overlay element */
 .paper-texture {
     display: none;
 }
 
-/* ================= FRONT SIDE (LETTERPRESS ENGRAVING) ================= */
+/* ================= FRONT SIDE (PAUL ALLEN LAYOUT) ================= */
 .card-front {
     transform: rotateY(0deg);
     pointer-events: auto;
@@ -118,7 +117,7 @@ body {
     pointer-events: none;
 }
 
-/* Accurate Deboss Effect (Pressed Ink into Heavy Cotton Stock) */
+/* Deep Letterpress Deboss / Pressed Metal Die Effect */
 .card-front *,
 .card-front a,
 .card-front button {
@@ -126,9 +125,10 @@ body {
     font-family: var(--font-card);
     text-transform: uppercase;
     
+    /* Authentic Inset Shadow: Pressed into paper with top shadow & bottom highlight */
     text-shadow: 
-        -0.5px -0.5px 0.5px rgba(0, 0, 0, 0.35),
-        0.5px 0.5px 0.5px rgba(255, 255, 255, 0.95);
+        0px 1px 1px rgba(255, 255, 255, 0.9),
+        0px -1px 1px rgba(0, 0, 0, 0.7);
 }
 
 .card-top {
@@ -139,8 +139,8 @@ body {
 }
 
 .card-phone a {
-    font-size: 0.9rem;
-    letter-spacing: 2.5px;
+    font-size: 1rem;
+    letter-spacing: 2px;
     font-weight: 700;
     text-decoration: none;
 }
@@ -152,36 +152,36 @@ body {
 }
 
 .card-school .main-detail {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: 2.5px;
+    line-height: 1.1;
 }
 
 .card-school .sub-detail {
-    font-size: 0.68rem;
+    font-size: 0.72rem;
     font-weight: 700;
-    letter-spacing: 1.5px;
-    margin-top: 1px;
+    letter-spacing: 1.8px;
+    margin-top: 3px;
 }
 
 .card-center {
     text-align: center;
-    margin: 15px 0;
+    margin: 10px 0;
 }
 
 .person-name {
-    font-size: 1.95rem;
+    font-size: 2.1rem;
     font-weight: 700;
-    letter-spacing: 6px;
-    margin-bottom: 2px;
-    line-height: 1.1;
+    letter-spacing: 5px;
+    margin-bottom: 3px;
+    line-height: 1;
 }
 
 .person-title {
-    font-size: 0.78rem;
+    font-size: 0.85rem;
     font-weight: 700;
     letter-spacing: 3px;
-    color: #333333 !important;
 }
 
 .card-bottom {
@@ -190,23 +190,23 @@ body {
 }
 
 .bottom-address {
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: 2.2px;
     margin-bottom: 2px;
 }
 
 .bottom-contact a {
-    font-size: 0.7rem;
+    font-size: 0.72rem;
     font-weight: 700;
-    letter-spacing: 1.8px;
+    letter-spacing: 2px;
     text-decoration: none;
 }
 
 .card-nav {
     margin-top: 10px;
     font-size: 0.72rem;
-    letter-spacing: 1.8px;
+    letter-spacing: 2px;
     font-weight: 700;
 }
 
@@ -215,7 +215,7 @@ body {
     border: none;
     font-size: 0.72rem;
     font-weight: 700;
-    letter-spacing: 1.8px;
+    letter-spacing: 2px;
     cursor: pointer;
     padding: 2px 4px;
     transition: opacity 0.2s ease;
@@ -242,7 +242,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #dcd7cb;
+    border-bottom: 1px solid #c8c3b5;
     padding-bottom: 10px;
     margin-bottom: 12px;
 }
@@ -361,7 +361,7 @@ body {
 }
 
 .tag {
-    background-color: #e5e0d3;
+    background-color: #e2ddd0;
     color: var(--text-engraved);
     font-size: 0.7rem;
     font-weight: 600;
@@ -406,7 +406,7 @@ body {
     letter-spacing: 1px;
     color: #666666;
     margin-bottom: 8px;
-    border-bottom: 1px dashed #dcd7cb;
+    border-bottom: 1px dashed #c8c3b5;
     padding-bottom: 4px;
     font-weight: 700;
 }
@@ -423,7 +423,7 @@ body {
     display: flex;
     flex-direction: column;
     background: #ffffff;
-    border: 1px solid #dcd7cb;
+    border: 1px solid #c8c3b5;
     border-radius: 2px;
     overflow: hidden;
 }
