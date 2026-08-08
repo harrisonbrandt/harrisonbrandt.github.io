@@ -12,129 +12,131 @@
 <body class="card-screen">
 
     <div class="scene">
-        <main class="card" id="businessCard">
-            
-            <!-- FRONT SIDE OF THE CARD -->
-            <div class="card-face card-front">
-                <div class="card-top">
-                    <div class="card-phone">
-                        <a href="tel:3125550199">312-555-0199</a>
-                    </div>
-                    <div class="card-school">
-                        <span class="main-detail">University of Iowa</span>
-                        <span class="sub-detail">Industrial Engineering</span>
-                    </div>
-                </div>
-
-                <div class="card-center">
-                    <h1 class="person-name">Harrison Brandt</h1>
-                    <p class="person-email">
-                        <a href="mailto:harrison-brandt@uiowa.edu">harrison-brandt@uiowa.edu</a>
-                    </p>
-                </div>
-
-                <div class="card-bottom">
-                    <p class="bottom-line">
-                        Iowa City, IA / Chicago, IL &nbsp;|&nbsp; Operations & Process Optimization
-                    </p>
-                    <p class="card-nav">
-                        <button type="button" onclick="showBackSection('about')" class="card-btn">About & Skills</button>
-                        &bull; 
-                        <button type="button" onclick="showBackSection('experience')" class="card-btn">Experience</button>
-                    </p>
-                </div>
-            </div>
-
-            <!-- BACK SIDE OF THE CARD (DYNAMIC CONTENT PANEL) -->
-            <div class="card-face card-back">
-                <div class="back-header">
-                    <button type="button" onclick="flipToFront()" class="back-link">&larr; Return to Front</button>
-                    <div class="back-tabs">
-                        <button type="button" id="tab-about" onclick="switchTab('about')" class="tab-btn">About</button>
-                        <button type="button" id="tab-experience" onclick="switchTab('experience')" class="tab-btn">Experience</button>
-                    </div>
-                </div>
-
-                <div class="back-scroll-area">
-                    <!-- EXPERIENCE CONTENT PANEL -->
-                    <div id="panel-experience" class="panel-content">
-                        <h2 class="panel-title">Internship Experience</h2>
-                        
-                        <div class="experience-block">
-                            <div class="exp-header">
-                                <h3>RG Construction Services</h3>
-                                <span class="exp-role">Project Management Intern</span>
-                            </div>
-
-                            <ul class="exp-bullets">
-                                <li>Created bid packages for 3 real-world projects for RG's Estimation Department.</li>
-                                <li>Worked with Virtual Design Construction to create technological solutions for information integration, learned automation in construction, & virtual design planning.</li>
-                                <li>Worked with Integrated Project Delivery teams to learn project coordination, lean construction, & scheduling used to reduce conflict & save time.</li>
-                                <li>Conducted a solo site meeting with General Contractors and Foreman regarding change approvals.</li>
-                                <li>Attended weekly enclosure meetings.</li>
-                            </ul>
-
-                            <div class="project-gallery">
-                                <div class="gallery-item">
-                                    <img src="ClevelandClinicExpansion.jpg" alt="Cleveland Clinic Expansion">
-                                    <span>Cleveland Clinic</span>
-                                </div>
-                                <div class="gallery-item">
-                                    <img src="BallysRender.jpg" alt="Bally's Casino Chicago">
-                                    <span>Bally's Casino</span>
-                                </div>
-                                <div class="gallery-item">
-                                    <img src="AdvocateCACExpansion25.jpg" alt="Advocate Illinois Masonic">
-                                    <span>Advocate Masonic</span>
-                                </div>
-                                <div class="gallery-item">
-                                    <img src="UCMCancerCenter.jpg" alt="UChicago Medicine Cancer Center">
-                                    <span>UCM Cancer Center</span>
-                                </div>
-                                <div class="gallery-item">
-                                    <img src="HinesInterestOfficeRenovation.jpg" alt="Hines Office Renovation">
-                                    <span>Hines Renovation</span>
-                                </div>
-                            </div>
+        <div class="entrance-wrapper">
+            <main class="card" id="businessCard">
+                
+                <!-- FRONT SIDE OF THE CARD -->
+                <div class="card-face card-front">
+                    <div class="card-top">
+                        <div class="card-phone">
+                            <a href="tel:3125550199">312-555-0199</a>
+                        </div>
+                        <div class="card-school">
+                            <span class="main-detail">University of Iowa</span>
+                            <span class="sub-detail">Industrial Engineering</span>
                         </div>
                     </div>
 
-                    <!-- ABOUT & SKILLS CONTENT PANEL -->
-                    <div id="panel-about" class="panel-content">
-                        <h2 class="panel-title">About Me</h2>
-                        <p class="about-text">
-                            I am an Industrial Engineering student passionate about using my love for technology to transform traditional operations. Having completed my project management internship at <strong>RG Construction</strong>, I apply systems thinking, VDC integration, and lean workflows to complex environments. I am actively seeking opportunities within cutting-edge tech, operations analytics, and AI sectors.
+                    <div class="card-center">
+                        <h1 class="person-name">Harrison Brandt</h1>
+                        <p class="person-email">
+                            <a href="mailto:harrison-brandt@uiowa.edu">harrison-brandt@uiowa.edu</a>
                         </p>
+                    </div>
 
-                        <h2 class="panel-title" style="margin-top: 30px;">Technical & Analytical Core</h2>
-                        <div class="skills-grid">
-                            <div class="skill-col">
-                                <h3>Systems & Software</h3>
-                                <ul>
-                                    <li>Autodesk Revit & BIM 360</li>
-                                    <li>Bluebeam Revu</li>
-                                    <li>On-Screen Takeoff (OST) & Quick Bid</li>
-                                    <li>Microsoft Ecosystem</li>
-                                    <li>HTML, CSS, Python, C++, Javascript</li>
-                                </ul>
-                            </div>
-                            <div class="skill-col">
-                                <h3>Industrial Engineering</h3>
-                                <ul>
-                                    <li>Data Analytics & Management</li>
-                                    <li>Takt Planning & Process Mapping</li>
-                                    <li>AI Implementation</li>
-                                    <li>Project Management</li>
-                                    <li>Complex Problem Solving</li>
-                                </ul>
-                            </div>
+                    <div class="card-bottom">
+                        <p class="bottom-line">
+                            Iowa City, IA / Chicago, IL &nbsp;|&nbsp; Operations & Process Optimization
+                        </p>
+                        <p class="card-nav">
+                            <button type="button" onclick="showBackSection('about')" class="card-btn">About & Skills</button>
+                            &bull; 
+                            <button type="button" onclick="showBackSection('experience')" class="card-btn">Experience</button>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- BACK SIDE OF THE CARD (DYNAMIC CONTENT PANEL) -->
+                <div class="card-face card-back">
+                    <div class="back-header">
+                        <button type="button" onclick="flipToFront()" class="back-link">&larr; Return to Front</button>
+                        <div class="back-tabs">
+                            <button type="button" id="tab-about" onclick="switchTab('about')" class="tab-btn">About</button>
+                            <button type="button" id="tab-experience" onclick="switchTab('experience')" class="tab-btn">Experience</button>
                         </div>
                     </div>
 
-                </div>
-            </div>
+                    <div class="back-scroll-area">
+                        <!-- EXPERIENCE CONTENT PANEL -->
+                        <div id="panel-experience" class="panel-content">
+                            <h2 class="panel-title">Internship Experience</h2>
+                            
+                            <div class="experience-block">
+                                <div class="exp-header">
+                                    <h3>RG Construction Services</h3>
+                                    <span class="exp-role">Project Management Intern</span>
+                                </div>
 
-        </main>
+                                <ul class="exp-bullets">
+                                    <li>Created bid packages for 3 real-world projects for RG's Estimation Department.</li>
+                                    <li>Worked with Virtual Design Construction to create technological solutions for information integration, learned automation in construction, & virtual design planning.</li>
+                                    <li>Worked with Integrated Project Delivery teams to learn project coordination, lean construction, & scheduling used to reduce conflict & save time.</li>
+                                    <li>Conducted a solo site meeting with General Contractors and Foreman regarding change approvals.</li>
+                                    <li>Attended weekly enclosure meetings.</li>
+                                </ul>
+
+                                <div class="project-gallery">
+                                    <div class="gallery-item">
+                                        <img src="ClevelandClinicExpansion.jpg" alt="Cleveland Clinic Expansion">
+                                        <span>Cleveland Clinic</span>
+                                    </div>
+                                    <div class="gallery-item">
+                                        <img src="BallysRender.jpg" alt="Bally's Casino Chicago">
+                                        <span>Bally's Casino</span>
+                                    </div>
+                                    <div class="gallery-item">
+                                        <img src="AdvocateCACExpansion25.jpg" alt="Advocate Illinois Masonic">
+                                        <span>Advocate Masonic</span>
+                                    </div>
+                                    <div class="gallery-item">
+                                        <img src="UCMCancerCenter.jpg" alt="UChicago Medicine Cancer Center">
+                                        <span>UCM Cancer Center</span>
+                                    </div>
+                                    <div class="gallery-item">
+                                        <img src="HinesInterestOfficeRenovation.jpg" alt="Hines Office Renovation">
+                                        <span>Hines Renovation</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ABOUT & SKILLS CONTENT PANEL -->
+                        <div id="panel-about" class="panel-content">
+                            <h2 class="panel-title">About Me</h2>
+                            <p class="about-text">
+                                I am an Industrial Engineering student passionate about using my love for technology to transform traditional operations. Having completed my project management internship at <strong>RG Construction</strong>, I apply systems thinking, VDC integration, and lean workflows to complex environments. I am actively seeking opportunities within cutting-edge tech, operations analytics, and AI sectors.
+                            </p>
+
+                            <h2 class="panel-title" style="margin-top: 30px;">Technical & Analytical Core</h2>
+                            <div class="skills-grid">
+                                <div class="skill-col">
+                                    <h3>Systems & Software</h3>
+                                    <ul>
+                                        <li>Autodesk Revit & BIM 360</li>
+                                        <li>Bluebeam Revu</li>
+                                        <li>On-Screen Takeoff (OST) & Quick Bid</li>
+                                        <li>Microsoft Ecosystem</li>
+                                        <li>HTML, CSS, Python, C++, Javascript</li>
+                                    </ul>
+                                </div>
+                                <div class="skill-col">
+                                    <h3>Industrial Engineering</h3>
+                                    <ul>
+                                        <li>Data Analytics & Management</li>
+                                        <li>Takt Planning & Process Mapping</li>
+                                        <li>AI Implementation</li>
+                                        <li>Project Management</li>
+                                        <li>Complex Problem Solving</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </main>
+        </div>
     </div>
 
     <!-- CARD FLIP & TRANSITION CONTROLLER -->
