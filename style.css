@@ -1,8 +1,8 @@
 :root {
-    --bg-bone: #ded9cd;           /* Shadowed background context */
-    --card-paper: #f4f1ea;        /* Authentic Silian Rail / Heavy Cotton Stock */
-    --text-engraved: #2a2927;     /* Deep engraved black/charcoal ink */
-    --font-card: 'Cinzel', serif; /* Roman letterpress style typography */
+    --bg-bone: #dcd7cc;           /* Warm background canvas */
+    --card-paper: #f7f5ef;        /* Silian Rail Bone Stock */
+    --text-engraved: #1d1c1a;     /* Inky engraved black */
+    --font-card: 'Cinzel', serif; /* Roman letterpress serif */
     --font-sans: 'Inter', -apple-system, sans-serif;
 }
 
@@ -28,17 +28,17 @@ body {
     align-items: center;
     padding: 20px;
     overflow-x: hidden;
-    background: radial-gradient(circle, #e6e2d8 0%, #cdc7b7 100%);
+    background: radial-gradient(circle at center, #eae6dc 0%, #c8c3b4 100%);
 }
 
 .scene {
     width: 100%;
-    max-width: 720px;
-    height: 420px;
+    max-width: 680px;
+    height: 390px;
     perspective: 1200px;
 }
 
-/* Isolated Entrance Animation Container */
+/* Entrance Animation Container */
 .entrance-wrapper {
     width: 100%;
     height: 100%;
@@ -49,7 +49,7 @@ body {
 @keyframes entranceFlip {
     0% {
         opacity: 0;
-        transform: rotateY(-90deg) rotateX(15deg) scale(0.8);
+        transform: rotateY(-90deg) rotateX(15deg) scale(0.85);
     }
     100% {
         opacity: 1;
@@ -57,7 +57,7 @@ body {
     }
 }
 
-/* 3D Card Object */
+/* 3D Card Container */
 .card {
     width: 100%;
     height: 100%;
@@ -67,12 +67,11 @@ body {
     transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Card Flipping Trigger */
 .card.is-flipped {
     transform: rotateY(180deg);
 }
 
-/* Base Card Faces */
+/* ================= COTTON RAG PAPER STOCK & FACES ================= */
 .card-face {
     position: absolute;
     width: 100%;
@@ -84,38 +83,32 @@ body {
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
     
-    /* Premium Heavy Cotton Paper Stock Texture */
+    /* Clean pure CSS Paper Stock Grain Texture */
     background-color: var(--card-paper);
     background-image: 
-        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.8) 0%, rgba(235, 230, 220, 0.3) 100%),
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,0.9) 0%, rgba(235,230,220,0.4) 100%),
+        repeating-radial-gradient(circle at 17% 32%, rgba(0,0,0,0.015) 0px, rgba(0,0,0,0.015) 1px, transparent 1px, transparent 3px),
+        repeating-radial-gradient(circle at 83% 67%, rgba(0,0,0,0.012) 0px, rgba(0,0,0,0.012) 1px, transparent 1px, transparent 4px);
     
-    border: 1px solid #dcd7cb;
+    border: 1px solid #d5d0c3;
     box-shadow: 
-        0 25px 50px rgba(0, 0, 0, 0.12),
-        0 4px 8px rgba(0, 0, 0, 0.05),
-        inset 0 0 1px rgba(255, 255, 255, 0.8);
+        0 25px 45px rgba(0, 0, 0, 0.14),
+        0 2px 5px rgba(0, 0, 0, 0.05),
+        inset 0 0 1px 1px rgba(255, 255, 255, 0.9),
+        inset 0 0 25px rgba(180, 170, 150, 0.12);
     border-radius: 2px;
-    padding: 45px 50px;
+    padding: 38px 42px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    overflow: hidden;
 }
 
-/* Overlay for Paper Grain Inset Shadow */
+/* Removes buggy background overlay element */
 .paper-texture {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    box-shadow: inset 0 0 30px rgba(180, 170, 150, 0.15);
-    z-index: 1;
+    display: none;
 }
 
-/* ================= FRONT SIDE (PAUL ALLEN BUSINESS CARD) ================= */
+/* ================= FRONT SIDE (LETTERPRESS ENGRAVING) ================= */
 .card-front {
     transform: rotateY(0deg);
     pointer-events: auto;
@@ -125,30 +118,28 @@ body {
     pointer-events: none;
 }
 
-/* Apply Letterpress Engraving Effect to All Front Elements */
+/* Accurate Deboss Effect (Pressed Ink into Heavy Cotton Stock) */
 .card-front *,
 .card-front a,
 .card-front button {
-    position: relative;
-    z-index: 2;
     color: var(--text-engraved) !important;
     font-family: var(--font-card);
     text-transform: uppercase;
     
-    /* True Letterpress Deboss Shadow */
     text-shadow: 
-        -1px -1px 1px rgba(0, 0, 0, 0.45),
-        1px 1px 1px rgba(255, 255, 255, 0.95);
+        -0.5px -0.5px 0.5px rgba(0, 0, 0, 0.35),
+        0.5px 0.5px 0.5px rgba(255, 255, 255, 0.95);
 }
 
 .card-top {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    width: 100%;
 }
 
 .card-phone a {
-    font-size: 1rem;
+    font-size: 0.9rem;
     letter-spacing: 2.5px;
     font-weight: 700;
     text-decoration: none;
@@ -161,80 +152,83 @@ body {
 }
 
 .card-school .main-detail {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 700;
     letter-spacing: 2px;
 }
 
 .card-school .sub-detail {
-    font-size: 0.72rem;
+    font-size: 0.68rem;
     font-weight: 700;
     letter-spacing: 1.5px;
-    margin-top: 2px;
+    margin-top: 1px;
 }
 
 .card-center {
     text-align: center;
-    margin: 10px 0;
+    margin: 15px 0;
 }
 
 .person-name {
-    font-size: 2.1rem;
+    font-size: 1.95rem;
     font-weight: 700;
     letter-spacing: 6px;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
+    line-height: 1.1;
 }
 
 .person-title {
-    font-size: 0.85rem;
+    font-size: 0.78rem;
     font-weight: 700;
     letter-spacing: 3px;
+    color: #333333 !important;
 }
 
 .card-bottom {
     text-align: center;
+    width: 100%;
 }
 
 .bottom-address {
-    font-size: 0.78rem;
+    font-size: 0.72rem;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 2px;
     margin-bottom: 2px;
 }
 
 .bottom-contact a {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: 1.8px;
     text-decoration: none;
 }
 
 .card-nav {
-    margin-top: 12px;
-    font-size: 0.75rem;
-    letter-spacing: 2px;
+    margin-top: 10px;
+    font-size: 0.72rem;
+    letter-spacing: 1.8px;
     font-weight: 700;
 }
 
 .card-btn {
     background: none;
     border: none;
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: 1.8px;
     cursor: pointer;
-    padding: 2px;
+    padding: 2px 4px;
     transition: opacity 0.2s ease;
 }
 
 .card-btn:hover {
-    opacity: 0.6;
+    opacity: 0.5;
 }
 
 /* ================= BACK SIDE STYLING ================= */
 .card-back {
     transform: rotateY(180deg);
-    padding: 30px 35px;
+    padding: 28px 32px;
     pointer-events: none;
     color: var(--text-engraved);
     font-family: var(--font-sans);
@@ -249,17 +243,15 @@ body {
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #dcd7cb;
-    padding-bottom: 12px;
-    margin-bottom: 15px;
-    position: relative;
-    z-index: 2;
+    padding-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .back-link {
     background: none;
     border: none;
     font-family: var(--font-card);
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     letter-spacing: 1.5px;
     font-weight: 700;
     color: var(--text-engraved);
@@ -275,7 +267,7 @@ body {
 .tab-btn {
     background: none;
     border: none;
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     color: #666666;
     cursor: pointer;
     padding-bottom: 2px;
@@ -292,8 +284,6 @@ body {
     flex-grow: 1;
     overflow-y: auto;
     padding-right: 5px;
-    position: relative;
-    z-index: 2;
 }
 
 .back-scroll-area::-webkit-scrollbar {
@@ -320,31 +310,31 @@ body {
 
 .panel-title {
     font-family: var(--font-card);
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     letter-spacing: 1.5px;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     text-transform: uppercase;
     font-weight: 700;
 }
 
-/* Refined Experience Styling */
+/* Experience Panel */
 .exp-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 8px;
     border-left: 2px solid var(--text-engraved);
-    padding-left: 12px;
+    padding-left: 10px;
 }
 
 .exp-title-group h3 {
-    font-size: 1.05rem;
+    font-size: 1rem;
     font-weight: 600;
 }
 
 .exp-role {
     display: block;
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     color: #555555;
     font-weight: 600;
     text-transform: uppercase;
@@ -353,7 +343,7 @@ body {
 
 .exp-meta {
     text-align: right;
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     color: #666666;
     display: flex;
     flex-direction: column;
@@ -367,15 +357,15 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
-    margin: 12px 0 16px 0;
+    margin: 10px 0 14px 0;
 }
 
 .tag {
     background-color: #e5e0d3;
     color: var(--text-engraved);
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     font-weight: 600;
-    padding: 3px 8px;
+    padding: 2px 7px;
     border-radius: 2px;
     letter-spacing: 0.3px;
 }
@@ -383,16 +373,16 @@ body {
 .exp-bullets {
     list-style: none;
     padding-left: 0;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 }
 
 .exp-bullets li {
     position: relative;
-    padding-left: 16px;
-    font-size: 0.85rem;
+    padding-left: 14px;
+    font-size: 0.83rem;
     color: #333333;
-    margin-bottom: 8px;
-    line-height: 1.5;
+    margin-bottom: 7px;
+    line-height: 1.45;
 }
 
 .exp-bullets li::before {
@@ -400,7 +390,7 @@ body {
     position: absolute;
     left: 0;
     top: 3px;
-    font-size: 0.45rem;
+    font-size: 0.4rem;
     color: var(--text-engraved);
 }
 
@@ -411,11 +401,11 @@ body {
 
 .gallery-section-title {
     font-family: var(--font-card);
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: #666666;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     border-bottom: 1px dashed #dcd7cb;
     padding-bottom: 4px;
     font-weight: 700;
@@ -423,13 +413,13 @@ body {
 
 .project-gallery {
     display: flex;
-    gap: 12px;
+    gap: 10px;
     overflow-x: auto;
-    padding-bottom: 8px;
+    padding-bottom: 6px;
 }
 
 .gallery-item {
-    flex: 0 0 120px;
+    flex: 0 0 115px;
     display: flex;
     flex-direction: column;
     background: #ffffff;
@@ -440,7 +430,7 @@ body {
 
 .img-wrapper {
     width: 100%;
-    height: 75px;
+    height: 70px;
     overflow: hidden;
     background-color: #eee;
 }
@@ -452,13 +442,13 @@ body {
 }
 
 .gallery-info {
-    padding: 5px 6px;
+    padding: 4px 5px;
     display: flex;
     flex-direction: column;
 }
 
 .project-name {
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     font-weight: 600;
     color: var(--text-engraved);
     white-space: nowrap;
@@ -467,7 +457,7 @@ body {
 }
 
 .project-type {
-    font-size: 0.62rem;
+    font-size: 0.6rem;
     color: #666666;
     white-space: nowrap;
     overflow: hidden;
@@ -476,28 +466,28 @@ body {
 
 /* About & Skills Content */
 .about-text {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     color: #333333;
-    line-height: 1.6;
+    line-height: 1.55;
 }
 
 .skills-grid {
     display: flex;
-    gap: 25px;
+    gap: 20px;
     flex-wrap: wrap;
 }
 
 .skill-col {
     flex: 1;
-    min-width: 200px;
+    min-width: 180px;
 }
 
 .skill-col h3 {
-    font-size: 0.78rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: #666666;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .skill-col ul {
@@ -505,15 +495,15 @@ body {
 }
 
 .skill-col li {
-    font-size: 0.85rem;
+    font-size: 0.83rem;
     color: var(--text-engraved);
-    margin-bottom: 6px;
+    margin-bottom: 5px;
 }
 
 /* Mobile Responsiveness */
 @media (max-width: 720px) {
-    .scene { height: 500px; }
-    .card-face { padding: 30px 25px; }
-    .person-name { font-size: 1.5rem; letter-spacing: 3px; }
-    .card-phone a, .card-school .main-detail { font-size: 0.8rem; }
+    .scene { height: 480px; }
+    .card-face { padding: 25px 20px; }
+    .person-name { font-size: 1.45rem; letter-spacing: 3px; }
+    .card-phone a, .card-school .main-detail { font-size: 0.78rem; }
 }
