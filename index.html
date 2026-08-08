@@ -38,25 +38,25 @@
                         Iowa City, IA / Chicago, IL &nbsp;|&nbsp; Operations & Process Optimization
                     </p>
                     <p class="card-nav">
-                        <button onclick="showBackSection('about')" class="card-btn">About & Skills</button>
+                        <button type="button" id="btn-to-about" class="card-btn">About & Skills</button>
                         &bull; 
-                        <button onclick="showBackSection('experience')" class="card-btn">Experience</button>
+                        <button type="button" id="btn-to-experience" class="card-btn">Experience</button>
                     </p>
                 </div>
             </div>
 
-            <!-- BACK SIDE OF THE CARD (DYNAMIC CONTENT PANEL) -->
+            <!-- BACK SIDE OF THE CARD -->
             <div class="card-face card-back">
                 <div class="back-header">
-                    <button onclick="flipToFront()" class="back-link">&larr; Return to Front</button>
+                    <button type="button" id="btn-to-front" class="back-link">&larr; Return to Front</button>
                     <div class="back-tabs">
-                        <button id="tab-about" onclick="switchTab('about')" class="tab-btn">About</button>
-                        <button id="tab-experience" onclick="switchTab('experience')" class="tab-btn">Experience</button>
+                        <button type="button" id="tab-about" class="tab-btn">About</button>
+                        <button type="button" id="tab-experience" class="tab-btn">Experience</button>
                     </div>
                 </div>
 
                 <div class="back-scroll-area">
-                    <!-- EXPERIENCE CONTENT PANEL -->
+                    <!-- EXPERIENCE PANEL -->
                     <div id="panel-experience" class="panel-content">
                         <h2 class="panel-title">Internship Experience</h2>
                         
@@ -99,7 +99,7 @@
                         </div>
                     </div>
 
-                    <!-- ABOUT & SKILLS CONTENT PANEL -->
+                    <!-- ABOUT PANEL -->
                     <div id="panel-about" class="panel-content">
                         <h2 class="panel-title">About Me</h2>
                         <p class="about-text">
@@ -137,26 +137,43 @@
         </main>
     </div>
 
-    <!-- CARD FLIP & TRANSITION CONTROLLER -->
     <script>
-        const card = document.getElementById('businessCard');
+        document.addEventListener('DOMContentLoaded', () => {
+            const card = document.getElementById('businessCard');
+            const btnAbout = document.getElementById('btn-to-about');
+            const btnExp = document.getElementById('btn-to-experience');
+            const btnFront = document.getElementById('btn-to-front');
+            const tabAbout = document.getElementById('tab-about');
+            const tabExp = document.getElementById('tab-experience');
 
-        function showBackSection(sectionName) {
-            switchTab(sectionName);
-            card.classList.add('is-flipped');
-        }
+            function switchTab(section) {
+                document.querySelectorAll('.panel-content').forEach(p => p.classList.remove('active'));
+                document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
 
-        function flipToFront() {
-            card.classList.remove('is-flipped');
-        }
+                document.getElementById(`panel-${section}`).classList.add('active');
+                document.getElementById(`tab-${section}`).classList.add('active');
+            }
 
-        function switchTab(sectionName) {
-            document.querySelectorAll('.panel-content').forEach(p => p.classList.remove('active'));
-            document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
+            btnAbout.addEventListener('click', (e) => {
+                e.preventDefault();
+                switchTab('about');
+                card.classList.add('is-flipped');
+            });
 
-            document.getElementById(`panel-${sectionName}`).classList.add('active');
-            document.getElementById(`tab-${sectionName}`).classList.add('active');
-        }
+            btnExp.addEventListener('click', (e) => {
+                e.preventDefault();
+                switchTab('experience');
+                card.classList.add('is-flipped');
+            });
+
+            btnFront.addEventListener('click', (e) => {
+                e.preventDefault();
+                card.classList.remove('is-flipped');
+            });
+
+            tabAbout.addEventListener('click', () => switchTab('about'));
+            tabExp.addEventListener('click', () => switchTab('experience'));
+        });
     </script>
 </body>
 </html>
