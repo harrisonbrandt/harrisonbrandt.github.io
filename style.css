@@ -1,524 +1,790 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;500;600&display=swap');
 
 :root {
-    --bg-dark-wood: #121110;       /* Dark background to make bone card pop */
-    --text-engraved: #1a1918;     /* Heavy black/charcoal letterpress ink */
-    --font-card: 'Cinzel', serif; /* Roman letterpress style font */
-    --font-sans: 'Inter', -apple-system, sans-serif;
+--bg-dark-wood: #121110;
+--text-engraved: #1a1918;
+--font-card: 'Cinzel', serif;
+--font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
+/* ================= GLOBAL RESET ================= */
+
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  }
+
+html,
+body {
+min-height: 100%;
 }
 
 body {
-    background-color: var(--bg-dark-wood);
-    color: var(--text-engraved);
-    font-family: var(--font-sans);
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
+background-color: var(--bg-dark-wood);
+color: var(--text-engraved);
+font-family: var(--font-sans);
+line-height: 1.5;
+-webkit-font-smoothing: antialiased;
 }
 
 /* ================= 3D VIEWPORT & ENTRANCE ANIMATION ================= */
+
 .card-screen {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    overflow-x: hidden;
-    /* Moody vignette background like the film scene */
-    background: radial-gradient(circle at center, #242220 0%, #0d0c0b 100%);
+min-height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 20px;
+overflow-x: hidden;
+
+/* Moody vignette background like the film scene */
+background: radial-gradient(
+circle at center,
+#242220 0%,
+#0d0c0b 100%
+);
 }
 
 .scene {
-    width: 100%;
-    max-width: 680px;
-    height: 380px;
-    perspective: 1200px;
+width: 100%;
+max-width: 680px;
+height: 380px;
+perspective: 1200px;
 }
 
 /* Entrance Animation Container */
+
 .entrance-wrapper {
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    animation: entranceFlip 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+width: 100%;
+height: 100%;
+transform-style: preserve-3d;
+animation: entranceFlip 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 @keyframes entranceFlip {
-    0% {
-        opacity: 0;
-        transform: rotateY(-90deg) rotateX(15deg) scale(0.85);
-    }
-    100% {
-        opacity: 1;
-        transform: rotateY(0deg) rotateX(0deg) scale(1);
-    }
+0% {
+opacity: 0;
+transform: rotateY(-90deg) rotateX(15deg) scale(0.85);
 }
 
-/* 3D Card Object */
+100% {
+opacity: 1;
+transform: rotateY(0deg) rotateX(0deg) scale(1);
+}
+}
+
+/* ================= 3D CARD OBJECT ================= */
+
 .card {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform-style: preserve-3d;
-    -webkit-transform-style: preserve-3d;
-    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+width: 100%;
+height: 100%;
+position: relative;
+transform-style: preserve-3d;
+-webkit-transform-style: preserve-3d;
+transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card.is-flipped {
-    transform: rotateY(180deg);
+transform: rotateY(180deg);
 }
 
 /* ================= AUTHENTIC COTTON RAG PAPER STOCK ================= */
+
 .card-face {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    transform-style: preserve-3d;
-    -webkit-transform-style: preserve-3d;
-    
-    /* Seamless high-resolution tactile cotton paper texture */
-    background-color: #f2f0e8;
-    background-image: url("https://www.transparenttextures.com/patterns/cardboard-flat.png");
-    
-    border: 1px solid #c8c3b5;
-    box-shadow: 
-        0 30px 60px rgba(0, 0, 0, 0.6),
-        0 10px 20px rgba(0, 0, 0, 0.4),
-        inset 0 0 2px rgba(255, 255, 255, 0.8),
-        inset 0 0 15px rgba(0, 0, 0, 0.05);
-    border-radius: 1px;
-    padding: 38px 45px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+position: absolute;
+width: 100%;
+height: 100%;
+top: 0;
+left: 0;
+
+backface-visibility: hidden;
+-webkit-backface-visibility: hidden;
+
+transform-style: preserve-3d;
+-webkit-transform-style: preserve-3d;
+
+/* Seamless high-resolution tactile cotton paper texture */
+background-color: #f2f0e8;
+background-image: url("https://www.transparenttextures.com/patterns/cardboard-flat.png");
+
+border: 1px solid #c8c3b5;
+
+box-shadow:
+0 30px 60px rgba(0, 0, 0, 0.6),
+0 10px 20px rgba(0, 0, 0, 0.4),
+inset 0 0 2px rgba(255, 255, 255, 0.8),
+inset 0 0 15px rgba(0, 0, 0, 0.05);
+
+border-radius: 1px;
+
+padding: 38px 45px;
+
+display: flex;
+flex-direction: column;
+justify-content: space-between;
 }
 
 .paper-texture {
-    display: none;
+display: none;
 }
 
-/* ================= FRONT SIDE (PAUL ALLEN LAYOUT) ================= */
+/* ================= FRONT SIDE ================= */
+
 .card-front {
-    transform: rotateY(0deg);
-    pointer-events: auto;
+transform: rotateY(0deg);
+pointer-events: auto;
 }
 
 .card.is-flipped .card-front {
-    pointer-events: none;
+pointer-events: none;
 }
 
 /* Deep Letterpress Deboss / Pressed Metal Die Effect */
+
 .card-front *,
 .card-front a,
 .card-front button {
-    color: var(--text-engraved) !important;
-    font-family: var(--font-card);
-    text-transform: uppercase;
-    
-    /* Authentic Inset Shadow: Pressed into paper with top shadow & bottom highlight */
-    text-shadow: 
-        0px 1px 1px rgba(255, 255, 255, 0.9),
-        0px -1px 1px rgba(0, 0, 0, 0.7);
+color: var(--text-engraved) !important;
+font-family: var(--font-card);
+text-transform: uppercase;
+
+/* Authentic inset shadow */
+text-shadow:
+0px 1px 1px rgba(255, 255, 255, 0.9),
+0px -1px 1px rgba(0, 0, 0, 0.7);
 }
 
 .card-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    width: 100%;
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+width: 100%;
 }
 
 .card-phone a {
-    font-size: 1rem;
-    letter-spacing: 2px;
-    font-weight: 700;
-    text-decoration: none;
+font-size: 1rem;
+letter-spacing: 2px;
+font-weight: 700;
+text-decoration: none;
 }
 
 .card-school {
-    text-align: right;
-    display: flex;
-    flex-direction: column;
+text-align: right;
+display: flex;
+flex-direction: column;
 }
 
 .card-school .main-detail {
-    font-size: 0.95rem;
-    font-weight: 700;
-    letter-spacing: 2.5px;
-    line-height: 1.1;
+font-size: 0.95rem;
+font-weight: 700;
+letter-spacing: 2.5px;
+line-height: 1.1;
 }
 
 .card-school .sub-detail {
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 1.8px;
-    margin-top: 3px;
+font-size: 0.72rem;
+font-weight: 700;
+letter-spacing: 1.8px;
+margin-top: 3px;
 }
 
 .card-center {
-    text-align: center;
-    margin: 10px 0;
+text-align: center;
+margin: 10px 0;
 }
 
 .person-name {
-    font-size: 2.1rem;
-    font-weight: 700;
-    letter-spacing: 5px;
-    margin-bottom: 3px;
-    line-height: 1;
+font-size: 2.1rem;
+font-weight: 700;
+letter-spacing: 5px;
+margin-bottom: 3px;
+line-height: 1;
 }
 
 .person-title {
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 3px;
+font-size: 0.85rem;
+font-weight: 700;
+letter-spacing: 3px;
 }
 
 .card-bottom {
-    text-align: center;
-    width: 100%;
+text-align: center;
+width: 100%;
 }
 
 .bottom-address {
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 2.2px;
-    margin-bottom: 2px;
+font-size: 0.75rem;
+font-weight: 700;
+letter-spacing: 2.2px;
+margin-bottom: 2px;
 }
 
 .bottom-contact a {
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-decoration: none;
+font-size: 0.72rem;
+font-weight: 700;
+letter-spacing: 2px;
+text-decoration: none;
 }
 
 .card-nav {
-    margin-top: 10px;
-    font-size: 0.72rem;
-    letter-spacing: 2px;
-    font-weight: 700;
+margin-top: 10px;
+font-size: 0.72rem;
+letter-spacing: 2px;
+font-weight: 700;
 }
 
 .card-btn {
-    background: none;
-    border: none;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    cursor: pointer;
-    padding: 2px 4px;
-    transition: opacity 0.2s ease;
+background: none;
+border: none;
+font-size: 0.72rem;
+font-weight: 700;
+letter-spacing: 2px;
+cursor: pointer;
+padding: 2px 4px;
+transition: opacity 0.2s ease;
 }
 
 .card-btn:hover {
-    opacity: 0.5;
+opacity: 0.5;
 }
 
 /* ================= BACK SIDE STYLING ================= */
+
 .card-back {
-    transform: rotateY(180deg);
-    padding: 28px 32px;
-    pointer-events: none;
-    color: var(--text-engraved);
-    font-family: var(--font-sans);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    overflow: hidden;
+transform: rotateY(180deg);
+
+padding: 28px 32px;
+
+pointer-events: none;
+
+color: var(--text-engraved);
+font-family: var(--font-sans);
+
+display: flex;
+flex-direction: column;
+
+/*
+
+* Important for the internal scrolling area.
+* The back face must be constrained to the card height.
+  */
+  height: 100%;
+  min-height: 0;
+
+overflow: hidden;
 }
 
 .card.is-flipped .card-back {
-    pointer-events: auto;
+pointer-events: auto;
 }
+
+/* ================= BACK HEADER ================= */
 
 .back-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #c8c3b5;
-    padding-bottom: 10px;
-    margin-bottom: 12px;
-    flex-shrink: 0;
-}
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+border-bottom: 1px solid #c8c3b5;
+
+padding-bottom: 10px;
+margin-bottom: 12px;
+
+/*
+
+* Prevent the header from shrinking when
+* the content below becomes scrollable.
+  */
+  flex: 0 0 auto;
+  }
 
 .back-link {
-    background: none;
-    border: none;
-    font-family: var(--font-card);
-    font-size: 0.75rem;
-    letter-spacing: 1.5px;
-    font-weight: 700;
-    color: var(--text-engraved);
-    cursor: pointer;
-    text-transform: uppercase;
+background: none;
+border: none;
+
+font-family: var(--font-card);
+font-size: 0.75rem;
+letter-spacing: 1.5px;
+font-weight: 700;
+
+color: var(--text-engraved);
+
+cursor: pointer;
+text-transform: uppercase;
 }
 
 .back-tabs {
-    display: flex;
-    gap: 15px;
+display: flex;
+gap: 15px;
 }
 
 .tab-btn {
-    background: none;
-    border: none;
-    font-size: 0.82rem;
-    color: #666666;
-    cursor: pointer;
-    padding-bottom: 2px;
-    font-weight: 500;
+background: none;
+border: none;
+
+font-size: 0.82rem;
+color: #666666;
+
+cursor: pointer;
+padding-bottom: 2px;
+
+font-weight: 500;
 }
 
 .tab-btn.active {
-    color: var(--text-engraved);
-    font-weight: 700;
-    border-bottom: 2px solid var(--text-engraved);
+color: var(--text-engraved);
+font-weight: 700;
+border-bottom: 2px solid var(--text-engraved);
 }
 
-/* Scroll Area Layout Fix */
+/* ================= SCROLL AREA ================= */
+
+/*
+
+* This is the important scrolling fix.
+*
+* The scroll area takes up the remaining height inside
+* the card-back. When the content is taller than that
+* available space, overflow-y creates the scrollbar.
+  */
+
 .back-scroll-area {
-    flex: 1 1 auto;
-    overflow-y: scroll;
-    padding-right: 6px;
-    min-height: 0;
-}
+flex: 1 1 0;
+
+/*
+
+* Allows a flex child to actually become smaller
+* than its content and therefore scroll.
+  */
+  min-height: 0;
+
+/*
+
+* Helps the browser calculate the available height
+* correctly inside the flex container.
+  */
+  height: 0;
+
+overflow-y: auto;
+overflow-x: hidden;
+
+padding-right: 6px;
+
+/*
+
+* Smoother scrolling on iOS/mobile browsers.
+  */
+  -webkit-overflow-scrolling: touch;
+
+/*
+
+* Prevents the scroll from propagating to the page
+* when the user reaches the top/bottom of this area.
+  */
+  overscroll-behavior: contain;
+  }
+
+/* Custom scrollbar */
 
 .back-scroll-area::-webkit-scrollbar {
-    width: 4px;
+width: 4px;
 }
 
 .back-scroll-area::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.05);
-    border-radius: 2px;
+background: rgba(0, 0, 0, 0.05);
+border-radius: 2px;
 }
 
 .back-scroll-area::-webkit-scrollbar-thumb {
-    background: #a39e90;
-    border-radius: 2px;
+background: #a39e90;
+border-radius: 2px;
 }
 
+.back-scroll-area::-webkit-scrollbar-thumb:hover {
+background: #858073;
+}
+
+/* Firefox scrollbar */
+
+.back-scroll-area {
+scrollbar-width: thin;
+scrollbar-color: #a39e90 rgba(0, 0, 0, 0.05);
+}
+
+/* ================= TAB CONTENT ================= */
+
 .panel-content {
-    display: none;
-    padding-bottom: 10px;
+display: none;
+padding-bottom: 10px;
 }
 
 .panel-content.active {
-    display: block;
-    animation: fadeIn 0.3s ease;
+display: block;
+animation: fadeIn 0.3s ease;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(4px); }
-    to { opacity: 1; transform: translateY(0); }
+from {
+opacity: 0;
+transform: translateY(4px);
+}
+
+to {
+opacity: 1;
+transform: translateY(0);
+}
 }
 
 .panel-title {
-    font-family: var(--font-card);
-    font-size: 1.1rem;
-    letter-spacing: 1.5px;
-    margin-bottom: 12px;
-    text-transform: uppercase;
-    font-weight: 700;
+font-family: var(--font-card);
+font-size: 1.1rem;
+letter-spacing: 1.5px;
+margin-bottom: 12px;
+text-transform: uppercase;
+font-weight: 700;
 }
 
-/* Experience Panel */
+/* ================= EXPERIENCE PANEL ================= */
+
 .exp-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 8px;
-    border-left: 2px solid var(--text-engraved);
-    padding-left: 10px;
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+
+margin-bottom: 8px;
+
+border-left: 2px solid var(--text-engraved);
+padding-left: 10px;
 }
 
 .exp-title-group h3 {
-    font-size: 1rem;
-    font-weight: 600;
+font-size: 1rem;
+font-weight: 600;
 }
 
 .exp-role {
-    display: block;
-    font-size: 0.78rem;
-    color: #555555;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+display: block;
+
+font-size: 0.78rem;
+color: #555555;
+font-weight: 600;
+
+text-transform: uppercase;
+letter-spacing: 0.5px;
 }
 
 .exp-meta {
-    text-align: right;
-    font-size: 0.78rem;
-    color: #666666;
-    display: flex;
-    flex-direction: column;
+text-align: right;
+
+font-size: 0.78rem;
+color: #666666;
+
+display: flex;
+flex-direction: column;
 }
 
 .exp-location {
-    font-style: italic;
+font-style: italic;
 }
 
 .exp-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin: 10px 0 14px 0;
+display: flex;
+flex-wrap: wrap;
+gap: 6px;
+
+margin: 10px 0 14px 0;
 }
 
 .tag {
-    background-color: #e2ddd0;
-    color: var(--text-engraved);
-    font-size: 0.7rem;
-    font-weight: 600;
-    padding: 2px 7px;
-    border-radius: 2px;
-    letter-spacing: 0.3px;
+background-color: #e2ddd0;
+color: var(--text-engraved);
+
+font-size: 0.7rem;
+font-weight: 600;
+
+padding: 2px 7px;
+
+border-radius: 2px;
+
+letter-spacing: 0.3px;
 }
 
 .exp-bullets {
-    list-style: none;
-    padding-left: 0;
-    margin-bottom: 16px;
+list-style: none;
+
+padding-left: 0;
+margin-bottom: 16px;
 }
 
 .exp-bullets li {
-    position: relative;
-    padding-left: 14px;
-    font-size: 0.83rem;
-    color: #333333;
-    margin-bottom: 7px;
-    line-height: 1.45;
+position: relative;
+
+padding-left: 14px;
+
+font-size: 0.83rem;
+color: #333333;
+
+margin-bottom: 7px;
+
+line-height: 1.45;
 }
 
 .exp-bullets li::before {
-    content: "■";
-    position: absolute;
-    left: 0;
-    top: 3px;
-    font-size: 0.4rem;
-    color: var(--text-engraved);
+content: "■";
+
+position: absolute;
+left: 0;
+top: 3px;
+
+font-size: 0.4rem;
+color: var(--text-engraved);
 }
 
 .exp-bullets strong {
-    color: var(--text-engraved);
-    font-weight: 600;
+color: var(--text-engraved);
+font-weight: 600;
 }
 
+/* ================= PROJECT GALLERY ================= */
+
 .gallery-section-title {
-    font-family: var(--font-card);
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #666666;
-    margin-bottom: 8px;
-    border-bottom: 1px dashed #c8c3b5;
-    padding-bottom: 4px;
-    font-weight: 700;
+font-family: var(--font-card);
+font-size: 0.78rem;
+
+text-transform: uppercase;
+letter-spacing: 1px;
+
+color: #666666;
+
+margin-bottom: 8px;
+
+border-bottom: 1px dashed #c8c3b5;
+
+padding-bottom: 4px;
+
+font-weight: 700;
 }
 
 .project-gallery {
-    display: flex;
-    gap: 10px;
-    overflow-x: auto;
-    padding-bottom: 6px;
+display: flex;
+gap: 10px;
+
+overflow-x: auto;
+
+padding-bottom: 6px;
 }
 
 .gallery-item {
-    flex: 0 0 115px;
-    display: flex;
-    flex-direction: column;
-    background: #ffffff;
-    border: 1px solid #c8c3b5;
-    border-radius: 2px;
-    overflow: hidden;
+flex: 0 0 115px;
+
+display: flex;
+flex-direction: column;
+
+background: #ffffff;
+
+border: 1px solid #c8c3b5;
+border-radius: 2px;
+
+overflow: hidden;
 }
 
 .img-wrapper {
-    width: 100%;
-    height: 70px;
-    overflow: hidden;
-    background-color: #eee;
+width: 100%;
+height: 70px;
+
+overflow: hidden;
+
+background-color: #eee;
 }
 
 .gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+width: 100%;
+height: 100%;
+
+object-fit: cover;
 }
 
 .gallery-info {
-    padding: 4px 5px;
-    display: flex;
-    flex-direction: column;
+padding: 4px 5px;
+
+display: flex;
+flex-direction: column;
 }
 
 .project-name {
-    font-size: 0.7rem;
-    font-weight: 600;
-    color: var(--text-engraved);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+font-size: 0.7rem;
+font-weight: 600;
+
+color: var(--text-engraved);
+
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
 }
 
 .project-type {
-    font-size: 0.6rem;
-    color: #666666;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+font-size: 0.6rem;
+color: #666666;
+
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
 }
 
-/* About & Skills Content */
+/* ================= ABOUT & SKILLS ================= */
+
 .about-text {
-    font-size: 0.88rem;
-    color: #333333;
-    line-height: 1.55;
-    margin-bottom: 15px;
+font-size: 0.88rem;
+
+color: #333333;
+
+line-height: 1.55;
+
+margin-bottom: 15px;
 }
 
 .skills-grid {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-top: 10px;
+display: flex;
+
+gap: 20px;
+
+flex-wrap: wrap;
+
+margin-top: 10px;
 }
 
 .skill-col {
-    flex: 1;
-    min-width: 180px;
+flex: 1;
+
+min-width: 180px;
 }
 
 .skill-col h3 {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #666666;
-    margin-bottom: 8px;
+font-size: 0.75rem;
+
+text-transform: uppercase;
+letter-spacing: 1px;
+
+color: #666666;
+
+margin-bottom: 8px;
 }
 
 .skill-col ul {
-    list-style: none;
+list-style: none;
 }
 
 .skill-col li {
-    font-size: 0.83rem;
-    color: var(--text-engraved);
-    margin-bottom: 5px;
+font-size: 0.83rem;
+
+color: var(--text-engraved);
+
+margin-bottom: 5px;
 }
 
-/* Mobile Responsiveness */
+/* ================= MOBILE RESPONSIVENESS ================= */
+
 @media (max-width: 720px) {
-    .scene { height: 480px; }
-    .card-face { padding: 25px 20px; }
-    .person-name { font-size: 1.45rem; letter-spacing: 3px; }
-    .card-phone a, .card-school .main-detail { font-size: 0.78rem; }
+.card-screen {
+min-height: 100vh;
+padding: 20px;
+}
+
+.scene {
+height: 480px;
+}
+
+.card-face {
+padding: 25px 20px;
+}
+
+.person-name {
+font-size: 1.45rem;
+letter-spacing: 3px;
+}
+
+.card-phone a,
+.card-school .main-detail {
+font-size: 0.78rem;
+}
+
+.card-back {
+padding: 22px 20px;
+}
+
+.back-tabs {
+gap: 10px;
+}
+
+.tab-btn {
+font-size: 0.72rem;
+}
+
+.back-link {
+font-size: 0.68rem;
+}
+
+.skills-grid {
+gap: 12px;
+}
+
+.skill-col {
+min-width: 140px;
+}
+}
+
+/* ================= SMALL MOBILE DEVICES ================= */
+
+@media (max-width: 480px) {
+.card-screen {
+padding: 10px;
+}
+
+.scene {
+height: 500px;
+}
+
+.card-face {
+padding: 20px 16px;
+}
+
+.card-back {
+padding: 20px 16px;
+}
+
+.back-header {
+margin-bottom: 10px;
+}
+
+.back-tabs {
+gap: 7px;
+}
+
+.tab-btn {
+font-size: 0.65rem;
+}
+
+.back-link {
+font-size: 0.62rem;
+}
+
+.person-name {
+font-size: 1.25rem;
+letter-spacing: 2px;
+}
+
+.person-title {
+font-size: 0.72rem;
+letter-spacing: 2px;
+}
+
+.skills-grid {
+flex-direction: column;
+gap: 10px;
+}
+
+.skill-col {
+min-width: 0;
+}
 }
