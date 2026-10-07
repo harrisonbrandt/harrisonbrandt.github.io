@@ -3,57 +3,51 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Harrison Brandt</title>
-  <meta name="description" content="Industrial & Systems Engineering at the University of Iowa." />
+  <title>Harrison Brandt | Industrial & Systems Engineering</title>
+  <meta name="description" content="Industrial & Systems Engineering student at the University of Iowa specializing in AI-enabled operations, process improvement, and virtual design." />
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
+    /* Natural Raw Titanium (Light Mode) */
     :root {
-      --bg: #FBFBFA;
-      --bg-card: rgba(255, 255, 255, 0.7);
-      --text: #1d1d1f;
-      --text-muted: #6e6e73;
-      --text-subtle: #86868b;
-      --border: rgba(0, 0, 0, 0.08);
-      --border-hover: rgba(0, 0, 0, 0.16);
-      --hover-bg: rgba(0, 0, 0, 0.03);
+      --titanium-bg: #ececec;
+      --card-face: linear-gradient(135deg, #f7f7f6 0%, #ebebea 45%, #e3e3e2 100%);
+      --card-inner: #f2f2f1;
+      --border-outer: #d1d1cf;
+      --border-chamfer: #ffffff;
+      --border-subtle: #dcdcd9;
+      --metal-rim: inset 0 1px 0 rgba(255, 255, 255, 0.9), inset 0 -1px 0 rgba(0, 0, 0, 0.08);
       
-      /* Apple Color Hits */
-      --accent-blue: #0071e3;
-      --accent-emerald: #34c759;
-      --accent-purple: #af52de;
-      --accent-amber: #f59e0b;
-      --accent-coral: #ff3b30;
-      
-      --glow-1: rgba(0, 113, 227, 0.08);
-      --glow-2: rgba(175, 82, 222, 0.06);
+      --text: #1b1c1d;
+      --text-muted: #5e6064;
+      --text-spec: #76787d;
+      --accent-etch: #0d0d0e;
+      --tag-bg: rgba(0, 0, 0, 0.04);
+      --tag-border: #d4d4d1;
 
-      --ease-apple: cubic-bezier(0.16, 1, 0.3, 1);
-      --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
+      --font-sans: 'Geist', -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+      --font-spec: 'Space Mono', monospace;
     }
 
+    /* Black Titanium / Space Black (Dark Mode) */
     [data-theme="dark"] {
-      --bg: #000000;
-      --bg-card: rgba(28, 28, 30, 0.75);
-      --text: #f5f5f7;
-      --text-muted: #a1a1a6;
-      --text-subtle: #6e6e73;
-      --border: rgba(255, 255, 255, 0.12);
-      --border-hover: rgba(255, 255, 255, 0.28);
-      --hover-bg: rgba(255, 255, 255, 0.06);
+      --titanium-bg: #121213;
+      --card-face: linear-gradient(135deg, #242528 0%, #1a1b1d 50%, #151617 100%);
+      --card-inner: #191a1b;
+      --border-outer: #36373b;
+      --border-chamfer: #4a4b50;
+      --border-subtle: #292a2d;
+      --metal-rim: inset 0 1px 0 rgba(255, 255, 255, 0.15), inset 0 -1px 0 rgba(0, 0, 0, 0.4);
 
-      --accent-blue: #2997ff;
-      --accent-emerald: #30d158;
-      --accent-purple: #bf5af2;
-      --accent-amber: #fbbf24;
-      --accent-coral: #ff453a;
-
-      --glow-1: rgba(41, 151, 255, 0.12);
-      --glow-2: rgba(191, 90, 242, 0.08);
+      --text: #f0f0f2;
+      --text-muted: #a2a4a9;
+      --text-spec: #6e7076;
+      --accent-etch: #ffffff;
+      --tag-bg: rgba(255, 255, 255, 0.04);
+      --tag-border: #38393d;
     }
 
     * {
@@ -63,695 +57,558 @@
     }
 
     body {
-      background-color: var(--bg);
+      background-color: var(--titanium-bg);
       color: var(--text);
-      font-family: var(--font-main);
-      line-height: 1.6;
+      font-family: var(--font-sans);
+      line-height: 1.55;
       -webkit-font-smoothing: antialiased;
-      transition: background-color 0.5s var(--ease-apple), color 0.5s var(--ease-apple);
-      padding: 60px 24px 120px 24px;
-      position: relative;
-      overflow-x: hidden;
-    }
-
-    /* Ambient Apple Lighting Gradients */
-    .ambient-glow {
-      position: fixed;
-      top: -120px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 800px;
-      height: 420px;
-      background: radial-gradient(circle at 40% 40%, var(--glow-1) 0%, transparent 60%),
-                  radial-gradient(circle at 70% 30%, var(--glow-2) 0%, transparent 50%);
-      filter: blur(60px);
-      pointer-events: none;
-      z-index: 0;
+      padding: 60px 20px 100px 20px;
+      transition: background-color 0.25s ease;
     }
 
     .container {
-      max-width: 660px;
+      max-width: 680px;
       margin: 0 auto;
-      position: relative;
-      z-index: 1;
     }
 
-    /* Top Controls */
+    /* Top Utility Bar */
     .utility-bar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 44px;
+      margin-bottom: 24px;
     }
 
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      font-size: 0.74rem;
-      font-weight: 500;
-      color: var(--text-muted);
-      background: var(--hover-bg);
-      border: 1px solid var(--border);
-      padding: 4px 10px;
-      border-radius: 980px;
-      backdrop-filter: blur(12px);
-    }
-
-    .status-pulse {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background-color: var(--accent-emerald);
-      box-shadow: 0 0 0 0 rgba(52, 199, 89, 0.7);
-      animation: pulse 2.2s infinite;
-    }
-
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(52, 199, 89, 0.6); }
-      70% { box-shadow: 0 0 0 8px rgba(52, 199, 89, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(52, 199, 89, 0); }
+    .serial-spec {
+      font-family: var(--font-spec);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--text-spec);
+      text-transform: uppercase;
     }
 
     .theme-toggle {
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      cursor: pointer;
-      font-size: 0.76rem;
+      background: var(--tag-bg);
+      border: 1px solid var(--border-outer);
+      color: var(--text);
+      font-family: var(--font-spec);
+      font-size: 0.72rem;
       padding: 5px 12px;
-      border-radius: 980px;
-      font-family: inherit;
-      transition: all 0.3s var(--ease-apple);
-      backdrop-filter: blur(12px);
+      border-radius: 4px;
+      cursor: pointer;
+      box-shadow: var(--metal-rim);
+      transition: all 0.2s ease;
     }
 
     .theme-toggle:hover {
-      color: var(--text);
-      border-color: var(--border-hover);
-      transform: scale(1.02);
+      border-color: var(--accent-etch);
     }
 
-    /* Fluid Entrance Animation */
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.8s var(--ease-apple), transform 0.8s var(--ease-apple);
+    /* Primary Titanium Slab Card */
+    .titanium-card {
+      background: var(--card-face);
+      border: 1px solid var(--border-outer);
+      border-radius: 12px;
+      padding: 44px 44px 38px 44px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06), var(--metal-rim);
+      position: relative;
+      margin-bottom: 24px;
     }
 
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
+    /* Subtle hairline micro-texture */
+    .titanium-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      border-radius: 11px;
+      border: 1px solid var(--border-chamfer);
+      pointer-events: none;
+      opacity: 0.45;
     }
 
-    /* Hero */
     header {
-      margin-bottom: 56px;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 28px;
+      margin-bottom: 32px;
     }
 
-    .title-wrapper {
+    .brand-row {
       display: flex;
+      justify-content: space-between;
       align-items: baseline;
-      min-height: 2.2rem;
       margin-bottom: 12px;
     }
 
     h1 {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       font-weight: 600;
       letter-spacing: -0.03em;
-      color: var(--text);
+      color: var(--accent-etch);
     }
 
-    .cursor {
-      display: inline-block;
-      width: 2px;
-      height: 1.3rem;
-      background-color: var(--accent-blue);
-      margin-left: 4px;
-      vertical-align: -2px;
-      animation: blink 0.9s infinite;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
+    .status-stamp {
+      font-family: var(--font-spec);
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      color: var(--text-spec);
+      text-transform: uppercase;
     }
 
     .bio-line {
+      font-size: 0.94rem;
       color: var(--text-muted);
-      font-size: 0.98rem;
-      line-height: 1.6;
-      margin-bottom: 18px;
-    }
-
-    .bio-highlight {
-      color: var(--text);
-      font-weight: 500;
+      max-width: 580px;
+      margin-bottom: 20px;
+      font-weight: 400;
     }
 
     .links-row {
       display: flex;
       gap: 16px;
-      font-size: 0.86rem;
+      font-family: var(--font-spec);
+      font-size: 0.78rem;
     }
 
     .links-row a {
-      color: var(--accent-blue);
+      color: var(--text);
       text-decoration: none;
-      font-weight: 500;
-      transition: opacity 0.2s ease, transform 0.2s ease;
+      transition: color 0.15s ease;
       display: inline-flex;
       align-items: center;
-      gap: 3px;
+      gap: 4px;
     }
 
     .links-row a:hover {
-      opacity: 0.8;
-      transform: translateY(-1px);
+      color: var(--text-spec);
     }
 
-    /* Sections */
+    /* Sectional Layout */
     section {
-      margin-bottom: 56px;
+      margin-bottom: 32px;
     }
 
-    .section-title {
-      font-size: 0.72rem;
+    .section-label {
+      font-family: var(--font-spec);
+      font-size: 0.7rem;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text-subtle);
-      margin-bottom: 16px;
-      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--text-spec);
+      margin-bottom: 14px;
+      display: block;
     }
 
-    /* Expandable Items */
-    .expandable-item {
-      border: 1px solid var(--border);
-      background-color: var(--bg-card);
-      backdrop-filter: blur(16px);
-      border-radius: 12px;
-      margin-bottom: 10px;
-      transition: border-color 0.3s var(--ease-apple), background-color 0.3s var(--ease-apple), box-shadow 0.3s var(--ease-apple), transform 0.3s var(--ease-apple);
-      overflow: hidden;
+    /* Expandable Precision Rows */
+    .spec-item {
+      border-bottom: 1px solid var(--border-subtle);
+      transition: background-color 0.15s ease;
     }
 
-    .expandable-item:hover {
-      border-color: var(--border-hover);
-      transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
+    .spec-item:first-of-type {
+      border-top: 1px solid var(--border-subtle);
     }
 
-    .expandable-item[data-open="true"] {
-      border-color: rgba(0, 113, 227, 0.35);
-      box-shadow: 0 8px 24px rgba(0, 113, 227, 0.06);
-    }
-
-    .item-summary {
+    .spec-trigger {
       width: 100%;
       text-align: left;
       background: none;
       border: none;
-      padding: 16px 20px;
+      padding: 16px 0;
       color: var(--text);
       cursor: pointer;
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: baseline;
       font-family: inherit;
     }
 
-    .item-role {
-      font-size: 0.95rem;
-      font-weight: 600;
+    .title-col {
       display: flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--text);
-      letter-spacing: -0.015em;
+      flex-direction: column;
+      gap: 2px;
     }
 
-    .role-bullet {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background-color: var(--accent-blue);
-      display: inline-block;
+    .role-title {
+      font-size: 0.94rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: var(--accent-etch);
     }
 
-    .role-bullet.purple { background-color: var(--accent-purple); }
-    .role-bullet.emerald { background-color: var(--accent-emerald); }
-    .role-bullet.amber { background-color: var(--accent-amber); }
-
-    .item-company {
-      font-size: 0.84rem;
+    .company-title {
+      font-size: 0.82rem;
       color: var(--text-muted);
-      margin-top: 3px;
     }
 
-    .item-meta {
-      text-align: right;
+    .meta-col {
       display: flex;
       align-items: center;
       gap: 12px;
     }
 
-    .item-date {
-      font-size: 0.78rem;
-      color: var(--text-subtle);
-      font-family: var(--font-mono);
+    .date-stamp {
+      font-family: var(--font-spec);
+      font-size: 0.75rem;
+      color: var(--text-spec);
     }
 
-    .chevron {
-      width: 14px;
-      height: 14px;
-      stroke: var(--text-subtle);
-      transition: transform 0.4s var(--ease-apple), stroke 0.3s ease;
+    .indicator {
+      font-family: var(--font-spec);
+      font-size: 0.8rem;
+      color: var(--text-spec);
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .expandable-item[data-open="true"] .chevron {
-      transform: rotate(180deg);
-      stroke: var(--accent-blue);
+    .spec-item[data-open="true"] .indicator {
+      transform: rotate(45deg);
+      color: var(--accent-etch);
     }
 
-    /* Grid Smooth Expand Container */
-    .grid-expander {
+    .spec-detail {
       display: grid;
       grid-template-rows: 0fr;
-      transition: grid-template-rows 0.4s var(--ease-apple);
+      transition: grid-template-rows 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .expandable-item[data-open="true"] .grid-expander {
+    .spec-item[data-open="true"] .spec-detail {
       grid-template-rows: 1fr;
     }
 
-    .expander-inner {
+    .detail-body {
       overflow: hidden;
     }
 
-    .content-body {
-      padding: 4px 20px 20px 20px;
-      font-size: 0.88rem;
+    .detail-inner {
+      padding: 4px 0 20px 0;
+      font-size: 0.86rem;
       color: var(--text-muted);
-      border-top: 1px solid var(--border);
-      margin-top: 4px;
-      padding-top: 14px;
     }
 
-    .content-body ul {
+    .detail-inner ul {
       list-style: none;
       padding-left: 0;
     }
 
-    .content-body li {
+    .detail-inner li {
       position: relative;
       padding-left: 18px;
-      margin-bottom: 9px;
-      line-height: 1.55;
+      margin-bottom: 8px;
+      line-height: 1.5;
     }
 
-    .content-body li::before {
-      content: "•";
+    .detail-inner li::before {
+      content: "/";
       position: absolute;
-      left: 2px;
-      color: var(--accent-blue);
-      font-weight: bold;
+      left: 0;
+      color: var(--text-spec);
+      font-family: var(--font-spec);
+      font-size: 0.78rem;
     }
 
-    .item-tags {
+    .tag-cluster {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
       margin-top: 14px;
+      padding-left: 18px;
     }
 
     .tag {
-      font-size: 0.72rem;
-      font-family: var(--font-mono);
-      color: var(--text-muted);
-      background-color: var(--hover-bg);
-      border: 1px solid var(--border);
-      padding: 3px 8px;
-      border-radius: 6px;
-      transition: all 0.2s ease;
+      font-family: var(--font-spec);
+      font-size: 0.68rem;
+      color: var(--text-spec);
+      background: var(--tag-bg);
+      border: 1px solid var(--tag-border);
+      padding: 2px 7px;
+      border-radius: 3px;
     }
 
-    .tag:hover {
-      color: var(--text);
-      border-color: var(--accent-blue);
-      background-color: rgba(0, 113, 227, 0.05);
-    }
-
-    /* Skills Table */
-    .skills-block {
+    /* Technical Specifications Table */
+    .specs-grid {
       display: grid;
       grid-template-columns: 140px 1fr;
-      gap: 16px;
-      padding: 14px 18px;
-      font-size: 0.86rem;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      margin-bottom: 8px;
-      backdrop-filter: blur(12px);
+      gap: 12px;
+      padding: 10px 0;
+      font-size: 0.82rem;
+      border-bottom: 1px solid var(--border-subtle);
     }
 
-    .skill-cat {
+    .specs-grid:first-of-type {
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .spec-key {
+      font-family: var(--font-spec);
+      font-size: 0.72rem;
+      color: var(--text-spec);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .spec-val {
       color: var(--text);
-      font-weight: 600;
-      font-size: 0.84rem;
     }
 
-    .skill-list {
-      color: var(--text-muted);
-    }
-
-    /* Footer */
+    /* Machined Micro Footer */
     footer {
-      border-top: 1px solid var(--border);
-      padding-top: 28px;
-      font-size: 0.8rem;
-      color: var(--text-subtle);
+      border-top: 1px solid var(--border-subtle);
+      margin-top: 36px;
+      padding-top: 20px;
       display: flex;
       justify-content: space-between;
-      font-family: var(--font-mono);
+      font-family: var(--font-spec);
+      font-size: 0.72rem;
+      color: var(--text-spec);
     }
 
-    @media (max-width: 580px) {
+    @media (max-width: 600px) {
       body {
-        padding: 40px 16px 80px 16px;
+        padding: 24px 12px 60px 12px;
       }
-      .skills-block {
-        grid-template-columns: 1fr;
+      .titanium-card {
+        padding: 28px 20px 24px 20px;
+      }
+      .brand-row {
+        flex-direction: column;
         gap: 4px;
       }
-      .item-summary {
-        padding: 14px 16px;
-      }
-      .content-body {
-        padding: 12px 16px 16px 16px;
+      .specs-grid {
+        grid-template-columns: 1fr;
+        gap: 2px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="ambient-glow"></div>
 
   <div class="container">
     
-    <div class="utility-bar reveal">
-      <div class="status-badge">
-        <span class="status-pulse"></span>
-        Seeking Summer 2027 Internships
-      </div>
+    <div class="utility-bar">
+      <div class="serial-spec">SPEC // UI-ISE-2028</div>
       <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme">
-        <span id="themeLabel">Dark Mode</span>
+        <span id="themeLabel">RAW TITANIUM</span>
       </button>
     </div>
 
-    <!-- Header with Typewriter & Fluid Motion -->
-    <header class="reveal">
-      <div class="title-wrapper">
-        <h1 id="typewriter"></h1><span class="cursor"></span>
-      </div>
-      <p class="bio-line">
-        Industrial & Systems Engineering at the <span class="bio-highlight">University of Iowa</span>[cite: 1]. Focused on process optimization, AI-enabled warehouse operations, and virtual design planning[cite: 1]. GymACT All-Star and Men’s Gymnastics Team Captain[cite: 1].
-      </p>
-      <div class="links-row">
-        <a href="mailto:harrisonbrandt3@gmail.com">Email ↗[cite: 1]</a>
-        <a href="https://linkedin.com/in/harrison-brandt" target="_blank" rel="noopener">LinkedIn ↗[cite: 1]</a>
-        <a href="https://github.com/harrisonbrandt" target="_blank" rel="noopener">GitHub ↗</a>
-      </div>
-    </header>
+    <!-- Machined Slab Card -->
+    <div class="titanium-card">
+      
+      <header>
+        <div class="brand-row">
+          <h1>Harrison Brandt</h1>
+          <div class="status-stamp">Iowa City, IA</div>
+        </div>
+        <p class="bio-line">
+          Industrial & Systems Engineering at the University of Iowa[cite: 1]. Focused on process optimization, AI-enabled warehouse operations, and virtual design planning[cite: 1]. GymACT All-Star and Men’s Gymnastics Team Captain[cite: 1].
+        </p>
+        <div class="links-row">
+          <a href="mailto:harrisonbrandt3@gmail.com">EMAIL ↗[cite: 1]</a>
+          <a href="https://linkedin.com/in/harrison-brandt" target="_blank" rel="noopener">LINKEDIN ↗[cite: 1]</a>
+          <a href="https://github.com/harrisonbrandt" target="_blank" rel="noopener">GITHUB ↗</a>
+        </div>
+      </header>
 
-    <!-- Experience -->
-    <section class="reveal">
-      <div class="section-title">Experience</div>
+      <!-- Experience Section -->
+      <section>
+        <span class="section-label">01 // Field Experience & Operations</span>
 
-      <!-- Brownells -->
-      <div class="expandable-item" data-open="false">
-        <button class="item-summary" aria-expanded="false">
-          <div>
-            <span class="item-role"><span class="role-bullet emerald"></span>Industrial Engineering Intern[cite: 1]</span>
-            <span class="item-company">Brownells, Inc. · Grinnell, IA[cite: 1]</span>
-          </div>
-          <div class="item-meta">
-            <span class="item-date">2026 – Present[cite: 1]</span>
-            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-          </div>
-        </button>
-        <div class="grid-expander">
-          <div class="expander-inner">
-            <div class="content-body">
-              <ul>
-                <li>Audited high-volume warehouse order processing pipelines, applying 5S and Lean principles to eliminate redundant invoice handling and reduce queue times[cite: 1].</li>
-                <li>Deployed generative AI tools (Google Gemini) alongside internal operational data to analyze systemic throughput constraints and evaluate comparative case studies for process automation.</li>
-                <li>Analyzed receiving verification and inventory staging data to eliminate cross-station discrepancies and improve end-to-end data integrity[cite: 1].</li>
-                <li>Earned Six Sigma White Belt certification by standardizing core warehouse operating procedures and driving process repeatability[cite: 1].</li>
-              </ul>
-              <div class="item-tags">
-                <span class="tag">Lean Six Sigma[cite: 1]</span>
-                <span class="tag">Google Gemini AI</span>
-                <span class="tag">5S</span>
-                <span class="tag">DMAIC</span>
+        <!-- Brownells -->
+        <div class="spec-item" data-open="false">
+          <button class="spec-trigger" aria-expanded="false">
+            <div class="title-col">
+              <span class="role-title">Industrial Engineering Intern[cite: 1]</span>
+              <span class="company-title">Brownells, Inc. · Grinnell, IA[cite: 1]</span>
+            </div>
+            <div class="meta-col">
+              <span class="date-stamp">2026 – PRES[cite: 1]</span>
+              <span class="indicator">+</span>
+            </div>
+          </button>
+          <div class="spec-detail">
+            <div class="detail-body">
+              <div class="detail-inner">
+                <ul>
+                  <li>Audited high-volume warehouse order processing pipelines, applying 5S and Lean principles to eliminate redundant invoice handling and reduce queue times[cite: 1].</li>
+                  <li>Deployed generative AI tools (Google Gemini) alongside internal operational data to analyze systemic throughput constraints and evaluate comparative case studies for process automation.</li>
+                  <li>Analyzed receiving verification and inventory staging data to eliminate cross-station discrepancies and improve end-to-end data integrity[cite: 1].</li>
+                  <li>Earned Six Sigma White Belt certification by standardizing core warehouse operating procedures and driving process repeatability[cite: 1].</li>
+                </ul>
+                <div class="tag-cluster">
+                  <span class="tag">LEAN SIX SIGMA[cite: 1]</span>
+                  <span class="tag">GOOGLE GEMINI AI</span>
+                  <span class="tag">5S STAGING</span>
+                  <span class="tag">DMAIC</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- RG Construction -->
-      <div class="expandable-item" data-open="false">
-        <button class="item-summary" aria-expanded="false">
-          <div>
-            <span class="item-role"><span class="role-bullet"></span>Project Manager & Estimator Intern[cite: 1]</span>
-            <span class="item-company">RG Construction Services · Elmhurst, IL[cite: 1]</span>
-          </div>
-          <div class="item-meta">
-            <span class="item-date">May – Aug 2026[cite: 1]</span>
-            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-          </div>
-        </button>
-        <div class="grid-expander">
-          <div class="expander-inner">
-            <div class="content-body">
-              <ul>
-                <li>Built competitive bid packages and material estimates for three commercial contracts valued at $400K–$600K each ($1.2M–$1.8M total), achieving a 100% contract award rate[cite: 1].</li>
-                <li>Partnered with the Virtual Design & Construction (VDC) team on layout automation and virtual design planning for a Microsoft data center and Advocate Health Care hospital expansion[cite: 1].</li>
-                <li>Applied Takt time planning and Lean construction scheduling on high-density jobsites including Cleveland Clinic, Mayo Clinic, and Bally's Casino Chicago to reduce trade interference[cite: 1].</li>
-                <li>Led independent jobsite coordination meetings on the Transwestern Renovation project, managing field RFIs, submittals, and schedule handoffs[cite: 1].</li>
-              </ul>
-              <div class="item-tags">
-                <span class="tag">Autodesk Revit[cite: 1]</span>
-                <span class="tag">Forma[cite: 1]</span>
-                <span class="tag">Takt Time Planning[cite: 1]</span>
-                <span class="tag">Commercial Estimating[cite: 1]</span>
+        <!-- RG Construction -->
+        <div class="spec-item" data-open="false">
+          <button class="spec-trigger" aria-expanded="false">
+            <div class="title-col">
+              <span class="role-title">Project Manager & Estimator Intern[cite: 1]</span>
+              <span class="company-title">RG Construction Services · Elmhurst, IL[cite: 1]</span>
+            </div>
+            <div class="meta-col">
+              <span class="date-stamp">MAY – AUG 2026[cite: 1]</span>
+              <span class="indicator">+</span>
+            </div>
+          </button>
+          <div class="spec-detail">
+            <div class="detail-body">
+              <div class="detail-inner">
+                <ul>
+                  <li>Built competitive bid packages and material estimates for three commercial contracts valued at $400K–$600K each ($1.2M–$1.8M total), achieving a 100% contract award rate[cite: 1].</li>
+                  <li>Partnered with the Virtual Design & Construction (VDC) team on layout automation and virtual design planning for a Microsoft data center and Advocate Health Care hospital expansion[cite: 1].</li>
+                  <li>Applied Takt time planning and Lean construction scheduling on high-density jobsites including Cleveland Clinic, Mayo Clinic, and Bally's Casino Chicago to reduce trade interference[cite: 1].</li>
+                  <li>Led independent jobsite coordination meetings on the Transwestern Renovation project, managing field RFIs, submittals, and schedule handoffs[cite: 1].</li>
+                </ul>
+                <div class="tag-cluster">
+                  <span class="tag">AUTODESK REVIT[cite: 1]</span>
+                  <span class="tag">FORMA[cite: 1]</span>
+                  <span class="tag">TAKT TIME[cite: 1]</span>
+                  <span class="tag">COMMERCIAL ESTIMATING[cite: 1]</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Argonne -->
-      <div class="expandable-item" data-open="false">
-        <button class="item-summary" aria-expanded="false">
-          <div>
-            <span class="item-role"><span class="role-bullet purple"></span>Biophysical Research Assistant[cite: 1]</span>
-            <span class="item-company">Argonne National Laboratory · Darien, IL[cite: 1]</span>
-          </div>
-          <div class="item-meta">
-            <span class="item-date">2022 – 2023[cite: 1]</span>
-            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-          </div>
-        </button>
-        <div class="grid-expander">
-          <div class="expander-inner">
-            <div class="content-body">
-              <ul>
-                <li>Led an 8-person team studying the structural dynamics of muscle proteins under piperine treatment; co-authored findings published in a peer-reviewed journal (PubMed PMID: 35328477)[cite: 1].</li>
-                <li>Operated small-angle X-ray diffraction (SAXD) at the Advanced Photon Source to quantify nanoscale lattice changes in biological tissue[cite: 1].</li>
-                <li>Presented quantitative findings to PhD researchers, conference panels, and academic school boards[cite: 1].</li>
-              </ul>
-              <div class="item-tags">
-                <span class="tag">X-ray Diffraction[cite: 1]</span>
-                <span class="tag">Statistical Modeling[cite: 1]</span>
-                <span class="tag">Technical Publication[cite: 1]</span>
+        <!-- Argonne -->
+        <div class="spec-item" data-open="false">
+          <button class="spec-trigger" aria-expanded="false">
+            <div class="title-col">
+              <span class="role-title">Biophysical Research Assistant[cite: 1]</span>
+              <span class="company-title">Argonne National Laboratory · Darien, IL[cite: 1]</span>
+            </div>
+            <div class="meta-col">
+              <span class="date-stamp">2022 – 2023[cite: 1]</span>
+              <span class="indicator">+</span>
+            </div>
+          </button>
+          <div class="spec-detail">
+            <div class="detail-body">
+              <div class="detail-inner">
+                <ul>
+                  <li>Led an 8-person team studying the structural dynamics of muscle proteins under piperine treatment; co-authored findings published in a peer-reviewed journal (PubMed PMID: 35328477)[cite: 1].</li>
+                  <li>Operated small-angle X-ray diffraction (SAXD) at the Advanced Photon Source to quantify nanoscale lattice changes in biological tissue[cite: 1].</li>
+                  <li>Presented quantitative findings to PhD researchers, conference panels, and academic school boards[cite: 1].</li>
+                </ul>
+                <div class="tag-cluster">
+                  <span class="tag">X-RAY DIFFRACTION[cite: 1]</span>
+                  <span class="tag">STATISTICAL MODELING[cite: 1]</span>
+                  <span class="tag">PUBMED 35328477[cite: 1]</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-    </section>
+      </section>
 
-    <!-- Projects -->
-    <section class="reveal">
-      <div class="section-title">Projects & Systems</div>
+      <!-- Engineering Systems Section -->
+      <section>
+        <span class="section-label">02 // Systems & Modeling Projects</span>
 
-      <div class="expandable-item" data-open="false">
-        <button class="item-summary" aria-expanded="false">
-          <div>
-            <span class="item-role"><span class="role-bullet amber"></span>Car Rental & Inventory Database[cite: 1]</span>
-            <span class="item-company">Relational Systems Architecture[cite: 1]</span>
-          </div>
-          <div class="item-meta">
-            <span class="item-date">Coursework[cite: 1]</span>
-            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-          </div>
-        </button>
-        <div class="grid-expander">
-          <div class="expander-inner">
-            <div class="content-body">
-              <ul>
-                <li>Designed and implemented a relational schema enforcing referential integrity across customer records, vehicle fleets, and reservations[cite: 1].</li>
-                <li>Automated availability queries to prevent overlap and maintain inventory concurrency[cite: 1].</li>
-              </ul>
-              <div class="item-tags">
-                <span class="tag">SQL[cite: 1]</span>
-                <span class="tag">HTML[cite: 1]</span>
-                <span class="tag">Database Design</span>
+        <div class="spec-item" data-open="false">
+          <button class="spec-trigger" aria-expanded="false">
+            <div class="title-col">
+              <span class="role-title">Relational Car Rental & Inventory Database[cite: 1]</span>
+              <span class="company-title">Database Normalization & Management[cite: 1]</span>
+            </div>
+            <div class="meta-col">
+              <span class="date-stamp">ACADEMIC[cite: 1]</span>
+              <span class="indicator">+</span>
+            </div>
+          </button>
+          <div class="spec-detail">
+            <div class="detail-body">
+              <div class="detail-inner">
+                <ul>
+                  <li>Designed and implemented a relational schema enforcing referential integrity across customer records, vehicle fleets, and reservations[cite: 1].</li>
+                  <li>Automated vehicle availability validation using parameterized queries, preventing reservation overlap and inventory concurrency bugs[cite: 1].</li>
+                </ul>
+                <div class="tag-cluster">
+                  <span class="tag">SQL SCHEMA[cite: 1]</span>
+                  <span class="tag">HTML[cite: 1]</span>
+                  <span class="tag">CONCURRENCY</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="expandable-item" data-open="false">
-        <button class="item-summary" aria-expanded="false">
-          <div>
-            <span class="item-role"><span class="role-bullet"></span>Collegiate Practice Scheduling Model</span>
-            <span class="item-company">Iowa Men's Gymnastics Operations</span>
-          </div>
-          <div class="item-meta">
-            <span class="item-date">2024 – Present[cite: 1]</span>
-            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-          </div>
-        </button>
-        <div class="grid-expander">
-          <div class="expander-inner">
-            <div class="content-body">
-              <ul>
-                <li>Formulated multi-apparatus rotation schedules across 6 stations for 20+ athletes, eliminating equipment idle time and smoothing transition flows[cite: 1].</li>
-                <li>Integrated weekly conditioning loads and individual routine recovery constraints into 25-hour practice blocks[cite: 1].</li>
-              </ul>
-              <div class="item-tags">
-                <span class="tag">Linear Scheduling</span>
-                <span class="tag">Capacity Planning</span>
+        <div class="spec-item" data-open="false">
+          <button class="spec-trigger" aria-expanded="false">
+            <div class="title-col">
+              <span class="role-title">Athletic Rotation & Resource Allocation Model</span>
+              <span class="company-title">Iowa Men's Gymnastics Operations</span>
+            </div>
+            <div class="meta-col">
+              <span class="date-stamp">2024 – PRES[cite: 1]</span>
+              <span class="indicator">+</span>
+            </div>
+          </button>
+          <div class="spec-detail">
+            <div class="detail-body">
+              <div class="detail-inner">
+                <ul>
+                  <li>Formulated multi-apparatus rotation schedules across 6 stations for 20+ athletes, eliminating equipment idle time and smoothing transition flows[cite: 1].</li>
+                  <li>Integrated weekly conditioning loads and individual routine recovery constraints into 25-hour practice blocks[cite: 1].</li>
+                </ul>
+                <div class="tag-cluster">
+                  <span class="tag">LINEAR SCHEDULING</span>
+                  <span class="tag">CAPACITY PLANNING</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-    </section>
+      </section>
 
-    <!-- Credentials & Skills -->
-    <section class="reveal">
-      <div class="section-title">Credentials & Technical Toolkit</div>
+      <!-- Technical Specifications Sheet -->
+      <section>
+        <span class="section-label">03 // Technical Specifications</span>
 
-      <div class="skills-block">
-        <span class="skill-cat">Certifications</span>
-        <span class="skill-list">Six Sigma White Belt (SSWB)[cite: 1]</span>
-      </div>
+        <div class="specs-grid">
+          <span class="spec-key">Certifications</span>
+          <span class="spec-val">Six Sigma White Belt (SSWB)[cite: 1]</span>
+        </div>
 
-      <div class="skills-block">
-        <span class="skill-cat">Operations & AI</span>
-        <span class="skill-list">Generative AI Workflow Benchmarking (Gemini), Lean, DMAIC, Takt Time Planning, 5S, Statistical Process Control (SPC)[cite: 1]</span>
-      </div>
+        <div class="specs-grid">
+          <span class="spec-key">Operations & AI</span>
+          <span class="spec-val">Generative AI Workflow Benchmarking (Gemini), Lean DMAIC, Takt Time Planning, 5S, SPC[cite: 1]</span>
+        </div>
 
-      <div class="skills-block">
-        <span class="skill-cat">Software & Data</span>
-        <span class="skill-list">SQL, Python, Excel VBA, HTML, Database Schema Modeling[cite: 1]</span>
-      </div>
+        <div class="specs-grid">
+          <span class="spec-key">Software & Data</span>
+          <span class="spec-val">SQL, Python, Excel VBA, HTML, Relational Database Modeling[cite: 1]</span>
+        </div>
 
-      <div class="skills-block">
-        <span class="skill-cat">Engineering CAD</span>
-        <span class="skill-list">Autodesk Revit, Autodesk Forma, AutoCAD, Creo Parametric, Bluebeam Revu[cite: 1]</span>
-      </div>
+        <div class="specs-grid">
+          <span class="spec-key">Virtual Design</span>
+          <span class="spec-val">Autodesk Revit, Autodesk Forma, AutoCAD, Creo Parametric, Bluebeam Revu[cite: 1]</span>
+        </div>
 
-      <div class="skills-block">
-        <span class="skill-cat">Athletics & Honors</span>
-        <span class="skill-list">GymACT All-Star (High Bar), USAG Academic All-American, Eagle Scout[cite: 1]</span>
-      </div>
-    </section>
+        <div class="specs-grid">
+          <span class="spec-key">Leadership</span>
+          <span class="spec-val">Team Captain (Iowa Gymnastics), GymACT All-Star, USAG Academic All-American, Eagle Scout[cite: 1]</span>
+        </div>
+      </section>
 
-    <footer class="reveal">
-      <span>Harrison Brandt · 2026</span>
-      <span>harrisonbrandt.github.io[cite: 1]</span>
-    </footer>
+      <footer>
+        <span>HARRISON BRANDT</span>
+        <span>HARRISONBRANDT.GITHUB.IO[cite: 1]</span>
+      </footer>
+
+    </div>
 
   </div>
 
   <script>
-    // Apple-style Fluid Reveal on Scroll
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.1
-    };
-
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.classList.add('active');
-          }, index * 80);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-    // Typewriter
-    const words = [
-      "Harrison Brandt",
-      "Industrial & Systems Engineer",
-      "Process & AI Operations",
-      "Harrison Brandt"
-    ];
-    let wordIdx = 0;
-
-    function runTypewriter() {
-      let chars = words[wordIdx].split("");
-      let el = document.getElementById('typewriter');
-      
-      function typeChar() {
-        if (chars.length > 0) {
-          el.innerHTML += chars.shift();
-          setTimeout(typeChar, 70);
-        } else {
-          if (wordIdx === words.length - 1) return;
-          setTimeout(deleteChar, 1800);
-        }
-      }
-
-      function deleteChar() {
-        let currentText = el.innerHTML;
-        if (currentText.length > 0) {
-          el.innerHTML = currentText.slice(0, -1);
-          setTimeout(deleteChar, 35);
-        } else {
-          wordIdx++;
-          setTimeout(runTypewriter, 300);
-        }
-      }
-
-      typeChar();
-    }
-    runTypewriter();
-
-    // Theme Switcher
+    // Minimal Machined Theme Toggle (Raw Titanium vs. Black Titanium)
     const themeBtn = document.getElementById('themeBtn');
     const themeLabel = document.getElementById('themeLabel');
     const rootEl = document.documentElement;
@@ -759,11 +616,11 @@
     function applyTheme(theme) {
       if (theme === 'dark') {
         rootEl.setAttribute('data-theme', 'dark');
-        themeLabel.textContent = 'Light Mode';
+        themeLabel.textContent = 'BLACK TITANIUM';
         localStorage.setItem('theme', 'dark');
       } else {
         rootEl.removeAttribute('data-theme');
-        themeLabel.textContent = 'Dark Mode';
+        themeLabel.textContent = 'RAW TITANIUM';
         localStorage.setItem('theme', 'light');
       }
     }
@@ -776,13 +633,13 @@
       applyTheme(rootEl.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
     });
 
-    // Expandable Smooth Rows
-    document.querySelectorAll('.expandable-item').forEach(item => {
-      const summaryBtn = item.querySelector('.item-summary');
-      summaryBtn.addEventListener('click', () => {
+    // Expandable Specs Mechanics
+    document.querySelectorAll('.spec-item').forEach(item => {
+      const trigger = item.querySelector('.spec-trigger');
+      trigger.addEventListener('click', () => {
         const isOpen = item.getAttribute('data-open') === 'true';
         item.setAttribute('data-open', !isOpen);
-        summaryBtn.setAttribute('aria-expanded', !isOpen);
+        trigger.setAttribute('aria-expanded', !isOpen);
       });
     });
   </script>
