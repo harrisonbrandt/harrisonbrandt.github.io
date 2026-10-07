@@ -1,220 +1,575 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harrison Brandt</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harrison Brandt | Industrial & Systems Engineering</title>
+  <meta name="description" content="Industrial and Systems Engineering student at the University of Iowa specializing in AI-enabled operations, process improvement, and virtual design." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #fafafa;
+      --text: #171717;
+      --text-muted: #737373;
+      --text-subtle: #a3a3a3;
+      --border: #e5e5e5;
+      --hover-bg: #f4f4f5;
+      --accent: #2563eb;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0f0f11;
+      --text: #f4f4f5;
+      --text-muted: #a1a1aa;
+      --text-subtle: #71717a;
+      --border: #27272a;
+      --hover-bg: #18181b;
+      --accent: #60a5fa;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      transition: background-color 0.25s ease, color 0.25s ease;
+      padding: 60px 24px 100px 24px;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* Top Utility / Theme Toggle */
+    .utility-bar {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 32px;
+    }
+
+    .theme-toggle {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 0.8rem;
+      padding: 5px 12px;
+      border-radius: 4px;
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .theme-toggle:hover {
+      color: var(--text);
+      border-color: var(--text-muted);
+      background-color: var(--hover-bg);
+    }
+
+    /* Bio / Identity Header */
+    header {
+      margin-bottom: 48px;
+    }
+
+    h1 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .bio-line {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .links-row {
+      display: flex;
+      gap: 16px;
+      font-size: 0.85rem;
+    }
+
+    .links-row a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .links-row a:hover {
+      color: var(--text);
+      text-decoration: underline;
+    }
+
+    /* Section Styling */
+    section {
+      margin-bottom: 48px;
+    }
+
+    .section-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-subtle);
+      margin-bottom: 18px;
+      font-weight: 500;
+    }
+
+    /* Expandable Items */
+    .expandable-item {
+      border-bottom: 1px solid var(--border);
+      transition: background-color 0.2s ease;
+    }
+
+    .expandable-item:first-of-type {
+      border-top: 1px solid var(--border);
+    }
+
+    .item-summary {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      padding: 16px 0;
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      font-family: inherit;
+    }
+
+    .item-title-group {
+      flex: 1;
+    }
+
+    .item-role {
+      font-size: 0.95rem;
+      font-weight: 500;
+      display: block;
+      color: var(--text);
+    }
+
+    .item-company {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      display: block;
+      margin-top: 2px;
+    }
+
+    .item-meta {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+    }
+
+    .item-date {
+      font-size: 0.8rem;
+      color: var(--text-subtle);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .chevron {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      stroke: var(--text-subtle);
+      transition: transform 0.25s ease, stroke 0.2s ease;
+    }
+
+    .expandable-item[data-open="true"] .chevron {
+      transform: rotate(180deg);
+      stroke: var(--text);
+    }
+
+    .item-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
+    }
+
+    .expandable-item[data-open="true"] .item-content {
+      max-height: 1000px;
+      transition: max-height 0.35s ease-in-out;
+    }
+
+    .content-body {
+      padding: 0 0 20px 0;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .content-body ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .content-body li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 10px;
+      line-height: 1.55;
+    }
+
+    .content-body li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: var(--text-subtle);
+    }
+
+    .item-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 14px;
+      padding-left: 18px;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      font-family: inherit;
+      color: var(--text-muted);
+      background-color: var(--hover-bg);
+      border: 1px solid var(--border);
+      padding: 2px 7px;
+      border-radius: 3px;
+    }
+
+    /* Skills Grid */
+    .skills-block {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 16px;
+      padding: 12px 0;
+      font-size: 0.85rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .skills-block:first-of-type {
+      border-top: 1px solid var(--border);
+    }
+
+    .skill-cat {
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .skill-list {
+      color: var(--text);
+    }
+
+    /* Clean Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      font-size: 0.8rem;
+      color: var(--text-subtle);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 580px) {
+      body {
+        padding: 40px 18px 60px 18px;
+      }
+      .skills-block {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+    }
+  </style>
 </head>
-<body class="card-screen">
-
-    <div class="scene">
-        <div class="entrance-wrapper">
-            <main class="card" id="businessCard">
-                
-                <!-- FRONT SIDE OF THE CARD -->
-                <div class="card-face card-front">
-                    <div class="card-top">
-                        <div class="card-phone">
-                            <a href="tel:7084994920">708.499.4920</a>
-                        </div>
-                        <div class="card-school">
-                            <span class="main-detail">UNIVERSITY OF IOWA</span>
-                            <span class="sub-detail">INDUSTRIAL ENGINEERING</span>
-                        </div>
-                    </div>
-
-                    <div class="card-center">
-                        <h1 class="person-name">HARRISON BRANDT</h1>
-                        <p class="person-title">OPERATIONS & ANALYTICS</p>
-                    </div>
-
-                    <div class="card-bottom">
-                        <p class="bottom-address">CHICAGO, IL &nbsp;•&nbsp; IOWA CITY, IA</p>
-                        <p class="bottom-contact">
-                            <a href="mailto:harrison-brandt@uiowa.edu">HARRISON-BRANDT@UIOWA.EDU</a>
-                        </p>
-                        <p class="card-nav">
-                            <button type="button" onclick="showBackSection('about')" class="card-btn">[ ABOUT & SKILLS ]</button>
-                            &nbsp;•&nbsp; 
-                            <button type="button" onclick="showBackSection('experience')" class="card-btn">[ EXPERIENCE ]</button>
-                        </p>
-                    </div>
-                </div>
-
-                <!-- BACK SIDE OF THE CARD (DYNAMIC CONTENT PANEL) -->
-                <div class="card-face card-back">
-                    <div class="back-header">
-                        <button type="button" onclick="flipToFront()" class="back-link">&larr; Return to Front</button>
-                        <div class="back-tabs">
-                            <button type="button" id="tab-about" onclick="switchTab('about')" class="tab-btn">About</button>
-                            <button type="button" id="tab-experience" onclick="switchTab('experience')" class="tab-btn">Experience</button>
-                        </div>
-                    </div>
-
-                    <div class="back-scroll-area">
-                        <!-- EXPERIENCE CONTENT PANEL -->
-                        <div id="panel-experience" class="panel-content">
-                            <h2 class="panel-title">Professional Experience</h2>
-                            
-                            <div class="experience-block">
-                                <!-- COMPANY & ROLE HEADER -->
-                                <div class="exp-header">
-                                    <div class="exp-title-group">
-                                        <h3>RG Construction Services</h3>
-                                        <span class="exp-role">Project Management Intern</span>
-                                    </div>
-                                    <div class="exp-meta">
-                                        <span class="exp-date">May 2026 – Jul 2026</span>
-                                        <span class="exp-location">Chicago, IL</span>
-                                    </div>
-                                </div>
-
-                                <!-- TAG HIGHLIGHTS -->
-                                <div class="exp-tags">
-                                    <span class="tag">VDC / BIM 360</span>
-                                    <span class="tag">Lean Construction</span>
-                                    <span class="tag">Bid Estimating</span>
-                                    <span class="tag">Subcontractor Coordination</span>
-                                </div>
-
-                                <!-- KEY RESPONSIBILITIES & ACCOMPLISHMENTS -->
-                                <ul class="exp-bullets">
-                                    <li>
-                                        <strong>Estimating & Bid Management:</strong> Developed comprehensive bid packages for 3 major commercial construction projects within RG’s Estimation Department.
-                                    </li>
-                                    <li>
-                                        <strong>Virtual Design & Construction (VDC):</strong> Modeled technological workflows for multi-trade information integration, implementing automation tools and virtual design planning to reduce field conflicts.
-                                    </li>
-                                    <li>
-                                        <strong>Lean Operations & Scheduling:</strong> Collaborated with Integrated Project Delivery (IPD) teams using Takt planning and lean scheduling methodologies to optimize timeline efficiency.
-                                    </li>
-                                    <li>
-                                        <strong>Site Operations & Governance:</strong> Managed a solo on-site change approval meeting with General Contractors and Foremen; routinely participated in weekly enclosure coordination meetings.
-                                    </li>
-                                </ul>
-
-                                <!-- PROJECT PORTFOLIO GALLERY -->
-                                <div class="gallery-section-title">Key Project Involvements</div>
-                                <div class="project-gallery">
-                                    <div class="gallery-item">
-                                        <div class="img-wrapper">
-                                            <img src="ClevelandClinicExpansion.jpg" alt="Cleveland Clinic Expansion">
-                                        </div>
-                                        <div class="gallery-info">
-                                            <span class="project-name">Cleveland Clinic</span>
-                                            <span class="project-type">Healthcare Expansion</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="gallery-item">
-                                        <div class="img-wrapper">
-                                            <img src="BallysRender.jpg" alt="Bally's Casino Chicago">
-                                        </div>
-                                        <div class="gallery-info">
-                                            <span class="project-name">Bally's Casino</span>
-                                            <span class="project-type">Commercial Facility</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="gallery-item">
-                                        <div class="img-wrapper">
-                                            <img src="AdvocateCACExpansion25.jpg" alt="Advocate Illinois Masonic">
-                                        </div>
-                                        <div class="gallery-info">
-                                            <span class="project-name">Advocate Masonic</span>
-                                            <span class="project-type">Medical Center</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="gallery-item">
-                                        <div class="img-wrapper">
-                                            <img src="UCMCancerCenter.jpg" alt="UChicago Medicine Cancer Center">
-                                        </div>
-                                        <div class="gallery-info">
-                                            <span class="project-name">UCM Cancer Center</span>
-                                            <span class="project-type">Research Facility</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="gallery-item">
-                                        <div class="img-wrapper">
-                                            <img src="HinesInterestOfficeRenovation.jpg" alt="Hines Office Renovation">
-                                        </div>
-                                        <div class="gallery-info">
-                                            <span class="project-name">Hines Renovation</span>
-                                            <span class="project-type">Corporate Office</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- ABOUT & SKILLS CONTENT PANEL -->
-                        <div id="panel-about" class="panel-content">
-                            <h2 class="panel-title">About Me</h2>
-                            <p class="about-text">
-                                I am an Industrial Engineering student passionate about using my love for technology to transform traditional operations. Having completed my project management internship at <strong>RG Construction</strong>, I apply systems thinking, VDC integration, and lean workflows to complex environments. I am actively seeking opportunities within cutting-edge tech, operations analytics, and AI sectors.
-                            </p>
-
-                            <h2 class="panel-title" style="margin-top: 25px;">Technical & Analytical Core</h2>
-                            <div class="skills-grid">
-                                <div class="skill-col">
-                                    <h3>Systems & Software</h3>
-                                    <ul>
-                                        <li>Autodesk Revit & BIM 360</li>
-                                        <li>Bluebeam Revu</li>
-                                        <li>On-Screen Takeoff (OST) & Quick Bid</li>
-                                        <li>Microsoft Ecosystem</li>
-                                        <li>HTML, CSS, Python, C++, Javascript</li>
-                                    </ul>
-                                </div>
-                                <div class="skill-col">
-                                    <h3>Industrial Engineering</h3>
-                                    <ul>
-                                        <li>Data Analytics & Management</li>
-                                        <li>Takt Planning & Process Mapping</li>
-                                        <li>AI Implementation</li>
-                                        <li>Project Management</li>
-                                        <li>Complex Problem Solving</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-            </main>
-        </div>
+<body>
+  <div class="container">
+    
+    <div class="utility-bar">
+      <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme">
+        <span id="themeLabel">Dark Mode</span>
+      </button>
     </div>
 
-    <!-- CARD FLIP & TRANSITION CONTROLLER -->
-    <script>
-        const card = document.getElementById('businessCard');
+    <!-- Personal Overview -->
+    <header>
+      <h1>Harrison Brandt</h1>
+      <p class="bio-line">
+        Industrial & Systems Engineering at the University of Iowa. Focused on process improvement, AI-enabled warehouse operations, and virtual design planning[cite: 1]. GymACT All-American and Men’s Gymnastics Team Captain[cite: 1].
+      </p>
+      <div class="links-row">
+        <a href="mailto:harrisonbrandt3@gmail.com">Email[cite: 1]</a>
+        <a href="https://linkedin.com/in/harrison-brandt" target="_blank" rel="noopener">LinkedIn[cite: 1]</a>
+        <a href="https://github.com/harrisonbrandt" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </header>
 
-        function showBackSection(sectionName) {
-            switchTab(sectionName);
-            card.classList.add('is-flipped');
-        }
+    <!-- Experience (Expandable) -->
+    <section>
+      <div class="section-title">Experience</div>
 
-        function flipToFront() {
-            card.classList.remove('is-flipped');
-        }
+      <!-- Brownells -->
+      <div class="expandable-item" data-open="false">
+        <button class="item-summary" aria-expanded="false">
+          <div class="item-title-group">
+            <span class="item-role">Industrial Engineering Intern[cite: 1]</span>
+            <span class="item-company">Brownells, Inc. · Grinnell, IA[cite: 1]</span>
+          </div>
+          <div class="item-meta">
+            <span class="item-date">2026 – Present[cite: 1]</span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+        </button>
+        <div class="item-content">
+          <div class="content-body">
+            <ul>
+              <li>Audited high-volume warehouse order processing pipelines, applying 5S and Lean principles to eliminate redundant invoice handling and reduce queue times[cite: 1].</li>
+              <li>Deployed generative AI tools (Google Gemini) alongside internal operational data to analyze systemic throughput constraints and evaluate comparative case studies for process automation.</li>
+              <li>Analyzed receiving verification and inventory staging data to eliminate cross-station discrepancies and improve end-to-end data integrity[cite: 1].</li>
+              <li>Earned Six Sigma White Belt certification by standardizing core warehouse operating procedures and driving process repeatability[cite: 1].</li>
+            </ul>
+            <div class="item-tags">
+              <span class="tag">Lean Six Sigma[cite: 1]</span>
+              <span class="tag">Google Gemini AI</span>
+              <span class="tag">5S</span>
+              <span class="tag">Workflow Analytics[cite: 1]</span>
+              <span class="tag">DMAIC</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
-        function switchTab(sectionName) {
-            document.querySelectorAll('.panel-content').forEach(p => p.classList.remove('active'));
-            document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
+      <!-- RG Construction -->
+      <div class="expandable-item" data-open="false">
+        <button class="item-summary" aria-expanded="false">
+          <div class="item-title-group">
+            <span class="item-role">Project Manager & Estimator Intern[cite: 1]</span>
+            <span class="item-company">RG Construction Services · Elmhurst, IL[cite: 1]</span>
+          </div>
+          <div class="item-meta">
+            <span class="item-date">May – Aug 2026[cite: 1]</span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+        </button>
+        <div class="item-content">
+          <div class="content-body">
+            <ul>
+              <li>Built competitive bid packages and material estimates for three commercial contracts valued at $400K–$600K each ($1.2M–$1.8M total), achieving a 100% contract award rate[cite: 1].</li>
+              <li>Partnered with the Virtual Design & Construction (VDC) team on layout automation and virtual design planning for a Microsoft data center and Advocate Health Care hospital expansion[cite: 1].</li>
+              <li>Applied Takt time planning and Lean construction scheduling on high-density jobsites including Cleveland Clinic, Mayo Clinic, and Bally's Casino Chicago to reduce trade interference[cite: 1].</li>
+              <li>Led independent jobsite coordination meetings on the Transwestern Renovation project, managing field RFIs, submittals, and schedule handoffs[cite: 1].</li>
+            </ul>
+            <div class="item-tags">
+              <span class="tag">Autodesk Revit[cite: 1]</span>
+              <span class="tag">Forma[cite: 1]</span>
+              <span class="tag">Takt Time Planning[cite: 1]</span>
+              <span class="tag">AutoCAD[cite: 1]</span>
+              <span class="tag">Commercial Estimating[cite: 1]</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
-            const panel = document.getElementById(`panel-${sectionName}`);
-            const tab = document.getElementById(`tab-${sectionName}`);
-            
-            if (panel) panel.classList.add('active');
-            if (tab) tab.classList.add('active');
-        }
-    </script>
+      <!-- Argonne National Lab -->
+      <div class="expandable-item" data-open="false">
+        <button class="item-summary" aria-expanded="false">
+          <div class="item-title-group">
+            <span class="item-role">Biophysical Research Assistant[cite: 1]</span>
+            <span class="item-company">Argonne National Laboratory · Darien, IL[cite: 1]</span>
+          </div>
+          <div class="item-meta">
+            <span class="item-date">2022 – 2023[cite: 1]</span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+        </button>
+        <div class="item-content">
+          <div class="content-body">
+            <ul>
+              <li>Led an 8-person team studying the structural dynamics of muscle proteins under piperine treatment; co-authored findings published in a peer-reviewed journal (PubMed PMID: 35328477)[cite: 1].</li>
+              <li>Operated small-angle X-ray diffraction (SAXD) at the Advanced Photon Source to quantify nanoscale lattice changes in biological tissue[cite: 1].</li>
+              <li>Presented quantitative findings to PhD researchers, conference panels, and academic school boards[cite: 1].</li>
+            </ul>
+            <div class="item-tags">
+              <span class="tag">X-ray Diffraction[cite: 1]</span>
+              <span class="tag">Statistical Modeling[cite: 1]</span>
+              <span class="tag">Technical Publication[cite: 1]</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Projects (Expandable) -->
+    <section>
+      <div class="section-title">Projects & Systems</div>
+
+      <div class="expandable-item" data-open="false">
+        <button class="item-summary" aria-expanded="false">
+          <div class="item-title-group">
+            <span class="item-role">Car Rental & Inventory Management Database[cite: 1]</span>
+            <span class="item-company">Systems Architecture & Schema Design[cite: 1]</span>
+          </div>
+          <div class="item-meta">
+            <span class="item-date">Academic[cite: 1]</span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+        </button>
+        <div class="item-content">
+          <div class="content-body">
+            <ul>
+              <li>Designed and implemented a relational database schema enforcing referential integrity across customer records, vehicle inventories, and reservation timelines[cite: 1].</li>
+              <li>Automated vehicle availability validation using parameterized queries, preventing reservation overlap and inventory concurrency bugs[cite: 1].</li>
+            </ul>
+            <div class="item-tags">
+              <span class="tag">SQL[cite: 1]</span>
+              <span class="tag">HTML[cite: 1]</span>
+              <span class="tag">Database Normalization</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="expandable-item" data-open="false">
+        <button class="item-summary" aria-expanded="false">
+          <div class="item-title-group">
+            <span class="item-role">Collegiate Apparatus Rotation Matrix</span>
+            <span class="item-company">Iowa Men's Gymnastics Operations</span>
+          </div>
+          <div class="item-meta">
+            <span class="item-date">2024 – Present[cite: 1]</span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+        </button>
+        <div class="item-content">
+          <div class="content-body">
+            <ul>
+              <li>Modeled practice schedules across 6 apparatus stations for 20+ athletes, eliminating equipment idle time and smoothing station load transitions[cite: 1].</li>
+              <li>Integrated weekly conditioning loads and individual routine recovery constraints into high-intensity 25-hour training blocks[cite: 1].</li>
+            </ul>
+            <div class="item-tags">
+              <span class="tag">Operations Planning</span>
+              <span class="tag">Linear Scheduling</span>
+              <span class="tag">Load Balancing</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Credentials & Skills -->
+    <section>
+      <div class="section-title">Credentials & Technical Toolkit</div>
+
+      <div class="skills-block">
+        <span class="skill-cat">Certifications</span>
+        <span class="skill-list">Six Sigma White Belt (SSWB)[cite: 1]</span>
+      </div>
+
+      <div class="skills-block">
+        <span class="skill-cat">Operations & AI</span>
+        <span class="skill-list">Generative AI Workflow Benchmarking (Gemini), Lean, DMAIC, Takt Time Planning, 5S, Statistical Process Control (SPC)[cite: 1]</span>
+      </div>
+
+      <div class="skills-block">
+        <span class="skill-cat">Software & Data</span>
+        <span class="skill-list">SQL, Python, Excel VBA, HTML, Relational Database Modeling[cite: 1]</span>
+      </div>
+
+      <div class="skills-block">
+        <span class="skill-cat">Engineering CAD</span>
+        <span class="skill-list">Autodesk Revit, Autodesk Forma, AutoCAD, Creo Parametric, Bluebeam Revu[cite: 1]</span>
+      </div>
+
+      <div class="skills-block">
+        <span class="skill-cat">Honors</span>
+        <span class="skill-list">GymACT All-Star (High Bar), USAG Academic All-American, Eagle Scout[cite: 1]</span>
+      </div>
+    </section>
+
+    <!-- Minimal Clean Footer -->
+    <footer>
+      <span>Harrison Brandt · 2026</span>
+      <span>harrisonbrandt.github.io[cite: 1]</span>
+    </footer>
+
+  </div>
+
+  <script>
+    // Theme toggle handling
+    const themeBtn = document.getElementById('themeBtn');
+    const themeLabel = document.getElementById('themeLabel');
+    const html = document.documentElement;
+
+    function setTheme(theme) {
+      if (theme === 'dark') {
+        html.setAttribute('data-theme', 'dark');
+        themeLabel.textContent = 'Light Mode';
+        localStorage.setItem('theme', 'dark');
+      } else {
+        html.removeAttribute('data-theme');
+        themeLabel.textContent = 'Dark Mode';
+        localStorage.setItem('theme', 'light');
+      }
+    }
+
+    // Initialize theme based on preference or system
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      setTheme('dark');
+    } else {
+      setTheme('light');
+    }
+
+    themeBtn.addEventListener('click', () => {
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      setTheme(isDark ? 'light' : 'dark');
+    });
+
+    // Expandable rows progressive disclosure
+    const items = document.querySelectorAll('.expandable-item');
+
+    items.forEach(item => {
+      const btn = item.querySelector('.item-summary');
+      btn.addEventListener('click', () => {
+        const isOpen = item.getAttribute('data-open') === 'true';
+        item.setAttribute('data-open', !isOpen);
+        btn.setAttribute('aria-expanded', !isOpen);
+      });
+    });
+  </script>
 </body>
 </html>
