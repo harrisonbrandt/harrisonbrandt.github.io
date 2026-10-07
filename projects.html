@@ -1,89 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects | Harrison Brandt</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects | Harrison Brandt</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ececec;
+      --card: #f6f6f5;
+      --border: #cdcdc9;
+      --text: #1b1c1d;
+      --text-muted: #5e6065;
+      --text-spec: #77797e;
+      --font-sans: 'Geist', sans-serif;
+      --font-spec: 'Space Mono', monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background-color: var(--bg); color: var(--text); font-family: var(--font-sans); padding: 60px 20px 100px; }
+    .container { max-width: 680px; margin: 0 auto; }
+    .nav-bar { margin-bottom: 32px; font-family: var(--font-spec); font-size: 0.78rem; }
+    .nav-bar a { color: var(--text); text-decoration: none; font-weight: 700; }
+    .page-title { font-size: 1.4rem; font-weight: 600; margin-bottom: 24px; letter-spacing: -0.02em; }
+    .proj-item { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+    .proj-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+    .role { font-weight: 600; font-size: 1.05rem; }
+    .date { font-family: var(--font-spec); font-size: 0.75rem; color: var(--text-spec); }
+    .company { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 14px; }
+    ul { list-style: none; }
+    li { position: relative; padding-left: 18px; margin-bottom: 10px; font-size: 0.88rem; color: var(--text-muted); line-height: 1.55; }
+    li::before { content: "/"; position: absolute; left: 0; color: var(--text-spec); font-family: var(--font-spec); }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+    .tag { font-family: var(--font-spec); font-size: 0.68rem; color: var(--text-spec); border: 1px solid var(--border); padding: 2px 7px; border-radius: 4px; }
+  </style>
 </head>
-<body class="page-screen">
+<body>
+  <div class="container">
+    <div class="nav-bar"><a href="index.html">← RETURN TO CARD</a></div>
+    <h1 class="page-title">02 // Systems & Modeling Projects</h1>
 
-    <main class="minimal-container">
-        <nav class="top-nav">
-            <a href="index.html" class="back-link">&larr; Harrison Brandt</a>
-            <div class="nav-links">
-                <a href="about.html">About</a>
-                <a href="projects.html" class="active">Projects</a>
-            </div>
-        </nav>
+    <div class="proj-item">
+      <div class="proj-header">
+        <span class="role">Relational Car Rental & Inventory Database[cite: 1]</span>
+        <span class="date">ACADEMIC[cite: 1]</span>
+      </div>
+      <div class="company">Database Normalization & Management[cite: 1]</div>
+      <ul>
+        <li>Designed and implemented a relational schema enforcing referential integrity across customer records, vehicle fleets, and reservations[cite: 1].</li>
+        <li>Automated vehicle availability validation using parameterized queries, preventing reservation overlap and inventory concurrency bugs[cite: 1].</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">SQL SCHEMA[cite: 1]</span>
+        <span class="tag">HTML[cite: 1]</span>
+        <span class="tag">CONCURRENCY</span>
+      </div>
+    </div>
 
-        <section class="minimal-section">
-            <h1 class="page-title">Featured Projects</h1>
-            <p class="page-subtitle">Real-world experience managing multi-million dollar developments at RG Construction.</p>
-
-            <div class="projects-list">
-                
-                <div class="project-item">
-                    <div class="project-thumb">
-                        <img src="ClevelandClinicExpansion.jpg" alt="Cleveland Clinic Expansion">
-                    </div>
-                    <div class="project-info">
-                        <h3>Healthcare Infrastructure Optimization</h3>
-                        <p class="project-meta">Cleveland Clinic Expansion</p>
-                        <p>Worked with IPD teams and prefabrication to ensure under-budget and successfully collaborative work to be done efficiently.</p>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="project-thumb">
-                        <img src="BallysRender.jpg" alt="Bally's Casino Chicago">
-                    </div>
-                    <div class="project-info">
-                        <h3>Entertainment & Commercial Planning</h3>
-                        <p class="project-meta">Bally's Casino (Chicago, IL)</p>
-                        <p>Contributed to the resolution of errors in enclosure meetings. Worked with specialties department and Gilbane to ensure proper installation of raised access flooring.</p>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="project-thumb">
-                        <img src="AdvocateCACExpansion25.jpg" alt="Advocate Illinois Masonic Medical Center">
-                    </div>
-                    <div class="project-info">
-                        <h3>Advanced Medical Systems Mapping</h3>
-                        <p class="project-meta">Advocate Illinois Masonic Medical Center</p>
-                        <p>Used Autodesk Revit & AutoCAD along with <strong>Dusty Robotics</strong> to automate all interior layout saving time, money, and conflict.</p>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="project-thumb">
-                        <img src="UCMCancerCenter.jpg" alt="UChicago Medicine Cancer Center">
-                    </div>
-                    <div class="project-info">
-                        <h3>State-of-the-Art Clinical Facilities</h3>
-                        <p class="project-meta">UChicago Medicine Cancer Center</p>
-                        <p>Worked with IPD teams to install highly repetitive hospital rooms effectively. Used prefabrication to complete complex framing in Chapel rooms and Lobbies.</p>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="project-thumb">
-                        <img src="HinesInterestOfficeRenovation.jpg" alt="Hines Interest Office Renovation">
-                    </div>
-                    <div class="project-info">
-                        <h3>Commercial Real Estate Renovation</h3>
-                        <p class="project-meta">Hines Interest Office Renovation</p>
-                        <p>Personally attended site walkthroughs and created the bid & proposal for RG Constructions Estimating department.</p>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-    </main>
-
+    <div class="proj-item">
+      <div class="proj-header">
+        <span class="role">Athletic Rotation & Resource Allocation Model</span>
+        <span class="date">2024 – PRES[cite: 1]</span>
+      </div>
+      <div class="company">Iowa Men's Gymnastics Operations</div>
+      <ul>
+        <li>Formulated multi-apparatus rotation schedules across 6 stations for 20+ athletes, eliminating equipment idle time and smoothing transition flows[cite: 1].</li>
+        <li>Integrated weekly conditioning loads and individual routine recovery constraints into 25-hour practice blocks[cite: 1].</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">LINEAR SCHEDULING</span>
+        <span class="tag">CAPACITY PLANNING</span>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
